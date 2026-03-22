@@ -1,0 +1,44 @@
+### 测试用例1：用户原始示例 - 返回NMX05
+
+GET http://localhost:8080/api/mada1/qryMotor?speed=1&q=480&tl=18&wgtActualExtraDecoTotal=30
+
+### 测试用例2：WGT超限 - 返回NMX07
+
+GET http://localhost:8080/api/mada1/qryMotor?speed=1&q=480&tl=18&wgtActualExtraDecoTotal=60
+
+### 测试用例3：Speed=3, Q=850 - 返回NMX20
+
+GET http://localhost:8080/api/mada1/qryMotor?speed=3&q=850&tl=50&wgtActualExtraDecoTotal=700&wgtCarDecorationTotal=700
+
+### 测试用例4：Speed=2.5, Q=550 - 返回NMX11-1150
+
+GET http://localhost:8080/api/mada1/qryMotor?speed=2.5&q=550&tl=50&wgtActualExtraDecoTotal=300
+
+### 测试用例5：无匹配规则 - 返回NA
+
+GET http://localhost:8080/api/mada1/qryMotor?speed=3&q=350&tl=50&wgtActualExtraDecoTotal=500
+
+### POST方式测试 - 返回NMX05
+
+POST http://localhost:8080/api/mada1/qryMotor
+Content-Type: application/json
+
+{
+    "speed": 1,
+    "q": 480,
+    "tl": 18,
+    "wgtActualExtraDecoTotal": 30
+}
+
+### POST方式测试 - 返回NMX20
+
+POST http://localhost:8080/api/mada1/qryMotor
+Content-Type: application/json
+
+{
+    "speed": 3,
+    "q": 850,
+    "tl": 50,
+    "wgtActualExtraDecoTotal": 700,
+    "wgtCarDecorationTotal": 700
+}
