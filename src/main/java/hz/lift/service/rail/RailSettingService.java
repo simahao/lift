@@ -1,5 +1,7 @@
-package hz.lift.service;
+package hz.lift.service.rail;
 
+import hz.lift.model.rail.RailSettingRequest;
+import hz.lift.model.rail.RailSettingResponse;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.RuleListener;
@@ -14,18 +16,14 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
-import hz.lift.model.MotorSelectionRequest;
-import hz.lift.model.MotorSelectionResponse;
-
 @Service
-public class MotorRuleEngineService {
+public class RailSettingService {
 
-    private static final Logger logger = LoggerFactory.getLogger(MotorRuleEngineService.class);
+    private static final Logger logger = LoggerFactory.getLogger(RailSettingService.class);
 
     private Rules rules;
     private DefaultRulesEngine rulesEngine;
@@ -34,13 +32,13 @@ public class MotorRuleEngineService {
     public void init() {
         try {
             loadRulesFromYaml();
-
+            
             RulesEngineParameters parameters = new RulesEngineParameters()
                 .skipOnFirstAppliedRule(true)
                 .priorityThreshold(1000);
-
+            
             rulesEngine = new DefaultRulesEngine(parameters);
-
+            
             rulesEngine.registerRuleListener(new RuleListener() {
                 @Override
                 public boolean beforeEvaluate(Rule rule, Facts facts) {
@@ -68,7 +66,7 @@ public class MotorRuleEngineService {
                     logger.error("Rule execution failed: {}", rule.getName(), exception);
                 }
             });
-
+            
             logger.info("Easy Rules engine initialized successfully with {} rules", rules.size());
         } catch (Exception e) {
             logger.error("Failed to initialize rules engine", e);
@@ -77,41 +75,42 @@ public class MotorRuleEngineService {
     }
 
     private void loadRulesFromYaml() throws Exception {
-        ClassPathResource resource = new ClassPathResource("rules/mada1-rules.yml");
+        ClassPathResource resource = new ClassPathResource("rules/rail/mrl-car-top-mac-gr-setting-rules.yml");
         try (Reader reader = new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8)) {
             MVELRuleFactory ruleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
             rules = ruleFactory.createRules(reader);
-            logger.info("Loaded {} rules from mada1-rules.yml", rules.size());
-
+            logger.info("Loaded {} rules from mrl-car-top-mac-gr-setting-rules.yml", rules.size());
+            
             for (Rule rule : rules) {
                 logger.debug("Rule: {} - Priority: {}", rule.getName(), rule.getPriority());
             }
         }
     }
 
-    public MotorSelectionResponse selectMotor(MotorSelectionRequest request) {
+    public RailSettingResponse getSetting(RailSettingRequest request) {
         if (request == null) {
-            return MotorSelectionResponse.of("NA", "Request is null", null);
+            return RailSettingResponse.of("NA", "Request is null");
         }
 
-        logger.info("Evaluating rules for: speed={}, q={}, tl={}, wgt={}",
-            request.getSpeed(), request.getQ(), request.getTl(), request.getWgtActualExtraDecoTotal());
+        logger.info("Evaluating rules for: typProductModel={}, typCarGr={}, typMacHoisting={}, typCarSling={}, valRatedSpeed={}", 
+            request.getTypProductModel(), request.getTypCarGr(), request.getTypMacHoisting(), 
+            request.getTypCarSling(), request.getValRatedSpeed());
 
         Facts facts = new Facts();
         facts.put("request", request);
-
-        MotorResult result = new MotorResult();
+        
+        RailResult result = new RailResult();
         facts.put("result", result);
 
         rulesEngine.fire(rules, facts);
 
-        logger.info("Rule matched: {} -> {}", result.matchedRule, result.motor);
+        logger.info("Rule matched: {} -> {}", result.matchedRule, result.result);
 
-        return MotorSelectionResponse.of(result.motor, result.matchedRule, null);
+        return RailSettingResponse.of(result.result, result.matchedRule);
     }
 
-    public static class MotorResult {
-        public String motor = "NA";
+    public static class RailResult {
+        public String result = "NA";
         public String matchedRule = "No rule matched";
     }
 }

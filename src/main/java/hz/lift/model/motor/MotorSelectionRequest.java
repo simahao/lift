@@ -1,4 +1,4 @@
-package hz.lift.model;
+package hz.lift.model.motor;
 
 import java.math.BigDecimal;
 

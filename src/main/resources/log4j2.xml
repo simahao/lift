@@ -22,12 +22,12 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="hz.lift" level="DEBUG" additivity="false">
+        <Logger name="hz.lift" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="RollingFile"/>
         </Logger>
 
-        <Logger name="org.jeasy.rules" level="DEBUG" additivity="false">
+        <Logger name="org.jeasy.rules" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
 

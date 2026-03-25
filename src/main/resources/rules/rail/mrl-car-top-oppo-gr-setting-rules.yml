@@ -1,0 +1,251 @@
+---
+name: "Rule1: PWH + T70-1/B + NMX07"
+priority: 1
+condition: "request.typProductModel == 'PWH' && request.typCarGr == 'T70-1/B' && request.typMacHoisting == 'NMX07'"
+actions:
+  - "result.result = 'KMC51380587V001'; result.matchedRule = 'Rule1';"
+
+---
+name: "Rule2: PWH + T82-1/B + NMX07"
+priority: 2
+condition: "request.typProductModel == 'PWH' && request.typCarGr == 'T82-1/B' && request.typMacHoisting == 'NMX07'"
+actions:
+  - "result.result = 'KMC51434821V001'; result.matchedRule = 'Rule2';"
+
+---
+name: "Rule3: PWE + T70-1/B"
+priority: 3
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T70-1/B'"
+actions:
+  - "result.result = 'KMC51732250V000'; result.matchedRule = 'Rule3';"
+
+---
+name: "Rule4: PWE + T82/B + RS"
+priority: 4
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T82/B' && request.typElecFeatLwd == 'RS'"
+actions:
+  - "result.result = 'KMC51732251V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule4b: PWE + T82-1/B + RS"
+priority: 4
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T82-1/B' && request.typElecFeatLwd == 'RS'"
+actions:
+  - "result.result = 'KMC51732251V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule4c: PWE + T89-1/B + RS"
+priority: 4
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T89-1/B' && request.typElecFeatLwd == 'RS'"
+actions:
+  - "result.result = 'KMC51732251V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule4d: PWE + T89-2/B + RS"
+priority: 4
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T89-2/B' && request.typElecFeatLwd == 'RS'"
+actions:
+  - "result.result = 'KMC51732251V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule4e: PWE + T89/B + RS"
+priority: 4
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T89/B' && request.typElecFeatLwd == 'RS'"
+actions:
+  - "result.result = 'KMC51732251V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule5: PWE + T89-1/B + I"
+priority: 5
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T89-1/B' && request.typElecFeatLwd == 'I'"
+actions:
+  - "result.result = 'KMC51670433V000'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule5b: PWE + T89-2/B + I"
+priority: 5
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T89-2/B' && request.typElecFeatLwd == 'I'"
+actions:
+  - "result.result = 'KMC51670433V000'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule5c: PWE + T89/B + I"
+priority: 5
+condition: "request.typProductModel == 'PWE' && request.typCarGr == 'T89/B' && request.typElecFeatLwd == 'I'"
+actions:
+  - "result.result = 'KMC51670433V000'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule6: PWS1/PWS4/PWS2/NMO + T89/B + NMX11 + not CF10-SCE + (height>75 or speed>=2)"
+priority: 6
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T89/B' && request.typMacHoisting == 'NMX11' && request.typCarSling != 'CF10-SCE' && (request.dimTravelHeightH > 75 || request.valRatedSpeed >= 2.0)"
+actions:
+  - "result.result = 'KMC51265001V002'; result.matchedRule = 'Rule6';"
+
+---
+name: "Rule7: PWS1/PWS3/PWS4/PWS2/NMO + T90/B + NMX11 + not CF10-SCE"
+priority: 7
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T90/B' && request.typMacHoisting == 'NMX11' && request.typCarSling != 'CF10-SCE'"
+actions:
+  - "result.result = 'KMC51265001V004'; result.matchedRule = 'Rule7';"
+
+---
+name: "Rule7b: PWS1/PWS3/PWS4/PWS2/NMO + T114/B + NMX11 + not CF10-SCE"
+priority: 7
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T114/B' && request.typMacHoisting == 'NMX11' && request.typCarSling != 'CF10-SCE'"
+actions:
+  - "result.result = 'KMC51265001V004'; result.matchedRule = 'Rule7';"
+
+---
+name: "Rule8: PWS1/PWS3/PWS4/PWS2/NMO + T125/B + NMX11 + not CF10-SCE"
+priority: 8
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T125/B' && request.typMacHoisting == 'NMX11' && request.typCarSling != 'CF10-SCE'"
+actions:
+  - "result.result = 'KMC51265001V006'; result.matchedRule = 'Rule8';"
+
+---
+name: "Rule9: PWE/PWS1/PWS3/PWS4/PWS2/NMO + T114/B + MX14/MX14E/NMX14/NMX14S + ISCS16"
+priority: 9
+condition: "(request.typProductModel == 'PWE' || request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T114/B' && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S') && request.typCarSling == 'ISCS16'"
+actions:
+  - "result.result = 'KMC746058H02'; result.matchedRule = 'Rule9';"
+
+---
+name: "Rule10: PWS4 + T89/B + NMX11 + CF10-SCE"
+priority: 10
+condition: "request.typProductModel == 'PWS4' && request.typCarGr == 'T89/B' && request.typMacHoisting == 'NMX11' && request.typCarSling == 'CF10-SCE'"
+actions:
+  - "result.result = 'KMC744022H01'; result.matchedRule = 'Rule10';"
+
+---
+name: "Rule11: PWE/PWS1/PWS3/PWS4/PWS2/NMO + T114/B + MX14/MX14E/NMX14/NMX14S + KLS"
+priority: 11
+condition: "(request.typProductModel == 'PWE' || request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T114/B' && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S') && request.typCarSling == 'KLS'"
+actions:
+  - "result.result = 'KMC51282093V002'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule11b: PWE/PWS1/PWS3/PWS4/PWS2/NMO + T114/B + MX14/MX14E/NMX14/NMX14S + ISCS13"
+priority: 11
+condition: "(request.typProductModel == 'PWE' || request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T114/B' && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S') && request.typCarSling == 'ISCS13'"
+actions:
+  - "result.result = 'KMC51282093V002'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule11c: PWE/PWS1/PWS3/PWS4/PWS2/NMO + T89/B + MX14/MX14E/NMX14/NMX14S + KLS"
+priority: 11
+condition: "(request.typProductModel == 'PWE' || request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T89/B' && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S') && request.typCarSling == 'KLS'"
+actions:
+  - "result.result = 'KMC51282093V002'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule11d: PWE/PWS1/PWS3/PWS4/PWS2/NMO + T89/B + MX14/MX14E/NMX14/NMX14S + ISCS13"
+priority: 11
+condition: "(request.typProductModel == 'PWE' || request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T89/B' && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S') && request.typCarSling == 'ISCS13'"
+actions:
+  - "result.result = 'KMC51282093V002'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule12: PWE/PWS1/PWS2/NMO + T90/B + MX14/MX14E/NMX14/NMX14S"
+priority: 12
+condition: "(request.typProductModel == 'PWE' || request.typProductModel == 'PWS1' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T90/B' && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S')"
+actions:
+  - "result.result = 'KMC51282093V002'; result.matchedRule = 'Rule12';"
+
+---
+name: "Rule13: PWS3 + T89/B + NMX11 + V<=1.75"
+priority: 13
+condition: "request.typProductModel == 'PWS3' && request.typCarGr == 'T89/B' && request.typMacHoisting == 'NMX11' && request.valRatedSpeed != null && request.valRatedSpeed <= 1.75"
+actions:
+  - "result.result = 'KMC51670433V000'; result.matchedRule = 'Rule13';"
+
+---
+name: "Rule14: PWS3 + T89/B + NMX11 + V>1.75"
+priority: 14
+condition: "request.typProductModel == 'PWS3' && request.typCarGr == 'T89/B' && request.typMacHoisting == 'NMX11' && request.valRatedSpeed != null && request.valRatedSpeed > 1.75"
+actions:
+  - "result.result = 'KMC51265001V002'; result.matchedRule = 'Rule14';"
+
+---
+name: "Rule15: PWS1/PWS2/NMO + T89-1/B/T89-2/B/T89/B + not MX14/.../NMX20 + (speed<=1.75 AND height<=75)"
+priority: 15
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && (request.typCarGr == 'T89-1/B' || request.typCarGr == 'T89-2/B' || request.typCarGr == 'T89/B') && !(request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S' || request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20') && request.valRatedSpeed != null && request.dimTravelHeightH != null && request.valRatedSpeed <= 1.75 && request.dimTravelHeightH <= 75"
+actions:
+  - "result.result = 'KMC51670433V000'; result.matchedRule = 'Rule15';"
+
+---
+name: "Rule16: PWS1/PWS3/PWS4/PWS2/NMO/PWE + T82/B + I"
+priority: 16
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO' || request.typProductModel == 'PWE') && request.typCarGr == 'T82/B' && request.typElecFeatLwd == 'I'"
+actions:
+  - "result.result = 'KMC51027852V000'; result.matchedRule = 'Rule16';"
+
+---
+name: "Rule16b: PWS1/PWS3/PWS4/PWS2/NMO/PWE + T82-1/B + I"
+priority: 16
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO' || request.typProductModel == 'PWE') && request.typCarGr == 'T82-1/B' && request.typElecFeatLwd == 'I'"
+actions:
+  - "result.result = 'KMC51027852V000'; result.matchedRule = 'Rule16';"
+
+---
+name: "Rule17: PWS1/PWS3/PWS4/PWS2/NMO/PWE + T75-3/B"
+priority: 17
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO' || request.typProductModel == 'PWE') && request.typCarGr == 'T75-3/B'"
+actions:
+  - "result.result = 'KMC51027855V000'; result.matchedRule = 'Rule17';"
+
+---
+name: "Rule17b: PWS1/PWS3/PWS4/PWS2/NMO/PWE + T75-4/B"
+priority: 17
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO' || request.typProductModel == 'PWE') && request.typCarGr == 'T75-4/B'"
+actions:
+  - "result.result = 'KMC51027855V000'; result.matchedRule = 'Rule17';"
+
+---
+name: "Rule17c: PWS1/PWS3/PWS4/PWS2/NMO/PWE + T75/B"
+priority: 17
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO' || request.typProductModel == 'PWE') && request.typCarGr == 'T75/B'"
+actions:
+  - "result.result = 'KMC51027855V000'; result.matchedRule = 'Rule17';"
+
+---
+name: "Rule18: PWS1/PWS3/PWS4/PWS2/NMO + T70-1/B"
+priority: 18
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T70-1/B'"
+actions:
+  - "result.result = 'KMC51027858V000'; result.matchedRule = 'Rule18';"
+
+---
+name: "Rule19: PWS1/PWS3/PWS4/PWS2/NMO + T114/B + MX20/MX20E/NMX20"
+priority: 19
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T114/B' && (request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20')"
+actions:
+  - "result.result = 'KM763049H02_CHN1'; result.matchedRule = 'Rule19';"
+
+---
+name: "Rule19b: PWS1/PWS3/PWS4/PWS2/NMO + T125/B + MX20/MX20E/NMX20"
+priority: 19
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T125/B' && (request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20')"
+actions:
+  - "result.result = 'KM763049H02_CHN1'; result.matchedRule = 'Rule19';"
+
+---
+name: "Rule19c: PWS1/PWS3/PWS4/PWS2/NMO + T127-2/B + MX20/MX20E/NMX20"
+priority: 19
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T127-2/B' && (request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20')"
+actions:
+  - "result.result = 'KM763049H02_CHN1'; result.matchedRule = 'Rule19';"
+
+---
+name: "Rule20: PWS1/PWS3/PWS4/PWS2/NMO + T114/B + NMX11 + CF10-SCE"
+priority: 20
+condition: "(request.typProductModel == 'PWS1' || request.typProductModel == 'PWS3' || request.typProductModel == 'PWS4' || request.typProductModel == 'PWS2' || request.typProductModel == 'NMO') && request.typCarGr == 'T114/B' && request.typMacHoisting == 'NMX11' && request.typCarSling == 'CF10-SCE'"
+actions:
+  - "result.result = 'KM769655H04_CHN3'; result.matchedRule = 'Rule20';"
+
+---
+name: "Default NA"
+priority: 1000
+condition: "true"
+actions:
+  - "result.result = 'NA'; result.matchedRule = 'No matching rule';"

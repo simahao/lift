@@ -1,4 +1,4 @@
-package hz.lift.model;
+package hz.lift.model.rail;
 
 public class RailSettingRequest {
     private String typProductModel;

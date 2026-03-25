@@ -1,7 +1,7 @@
-package hz.lift.service;
+package hz.lift.service.motor;
 
-import hz.lift.model.MotorSelectionRequest;
-import hz.lift.model.MotorSelectionResponse;
+import hz.lift.model.motor.MotorSelectionRequest;
+import hz.lift.model.motor.MotorSelectionResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

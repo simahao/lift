@@ -1,8 +1,8 @@
-package hz.lift.controller;
+package hz.lift.controller.motor;
 
-import hz.lift.model.MotorSelectionRequest;
-import hz.lift.model.MotorSelectionResponse;
-import hz.lift.service.MotorRuleEngineService;
+import hz.lift.model.motor.MotorSelectionRequest;
+import hz.lift.model.motor.MotorSelectionResponse;
+import hz.lift.service.motor.MotorRuleEngineService;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;

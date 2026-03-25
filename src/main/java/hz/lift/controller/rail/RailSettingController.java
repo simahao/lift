@@ -1,8 +1,8 @@
-package hz.lift.controller;
+package hz.lift.controller.rail;
 
-import hz.lift.model.RailSettingRequest;
-import hz.lift.model.RailSettingResponse;
-import hz.lift.service.RailSettingService;
+import hz.lift.model.rail.RailSettingRequest;
+import hz.lift.model.rail.RailSettingResponse;
+import hz.lift.service.rail.RailSettingService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -1,4 +1,4 @@
-package hz.lift.model;
+package hz.lift.model.rail;
 
 public class RailSettingResponse {
     private String result;

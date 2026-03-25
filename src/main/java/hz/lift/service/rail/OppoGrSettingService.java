@@ -1,7 +1,7 @@
-package hz.lift.service;
+package hz.lift.service.rail;
 
-import hz.lift.model.RailSettingRequest;
-import hz.lift.model.RailSettingResponse;
+import hz.lift.model.rail.OppoGrSettingRequest;
+import hz.lift.model.rail.OppoGrSettingResponse;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.RuleListener;
@@ -21,9 +21,9 @@ import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 
 @Service
-public class RailSettingService {
+public class OppoGrSettingService {
 
-    private static final Logger logger = LoggerFactory.getLogger(RailSettingService.class);
+    private static final Logger logger = LoggerFactory.getLogger(OppoGrSettingService.class);
 
     private Rules rules;
     private DefaultRulesEngine rulesEngine;
@@ -75,11 +75,11 @@ public class RailSettingService {
     }
 
     private void loadRulesFromYaml() throws Exception {
-        ClassPathResource resource = new ClassPathResource("rules/rail/mrl-car-top-mac-gr-setting-rules.yml");
+        ClassPathResource resource = new ClassPathResource("rules/rail/mrl-car-top-oppo-gr-setting-rules.yml");
         try (Reader reader = new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8)) {
             MVELRuleFactory ruleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
             rules = ruleFactory.createRules(reader);
-            logger.info("Loaded {} rules from mrl-car-top-mac-gr-setting-rules.yml", rules.size());
+            logger.info("Loaded {} rules from mrl-car-top-oppo-gr-setting-rules.yml", rules.size());
             
             for (Rule rule : rules) {
                 logger.debug("Rule: {} - Priority: {}", rule.getName(), rule.getPriority());
@@ -87,29 +87,30 @@ public class RailSettingService {
         }
     }
 
-    public RailSettingResponse getSetting(RailSettingRequest request) {
+    public OppoGrSettingResponse getSetting(OppoGrSettingRequest request) {
         if (request == null) {
-            return RailSettingResponse.of("NA", "Request is null");
+            return OppoGrSettingResponse.of("NA", "Request is null");
         }
 
-        logger.info("Evaluating rules for: typProductModel={}, typCarGr={}, typMacHoisting={}, typCarSling={}, valRatedSpeed={}", 
+        logger.info("Evaluating rules for: typProductModel={}, typCarGr={}, typMacHoisting={}, typCarSling={}, typElecFeatLwd={}, dimTravelHeightH={}, valRatedSpeed={}", 
             request.getTypProductModel(), request.getTypCarGr(), request.getTypMacHoisting(), 
-            request.getTypCarSling(), request.getValRatedSpeed());
+            request.getTypCarSling(), request.getTypElecFeatLwd(), request.getDimTravelHeightH(), 
+            request.getValRatedSpeed());
 
         Facts facts = new Facts();
         facts.put("request", request);
         
-        RailResult result = new RailResult();
+        OppoGrResult result = new OppoGrResult();
         facts.put("result", result);
 
         rulesEngine.fire(rules, facts);
 
         logger.info("Rule matched: {} -> {}", result.matchedRule, result.result);
 
-        return RailSettingResponse.of(result.result, result.matchedRule);
+        return OppoGrSettingResponse.of(result.result, result.matchedRule);
     }
 
-    public static class RailResult {
+    public static class OppoGrResult {
         public String result = "NA";
         public String matchedRule = "No rule matched";
     }

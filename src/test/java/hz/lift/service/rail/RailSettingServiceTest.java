@@ -1,12 +1,13 @@
-package hz.lift.service;
+package hz.lift.service.rail;
 
-import hz.lift.model.RailSettingRequest;
-import hz.lift.model.RailSettingResponse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import hz.lift.model.rail.RailSettingRequest;
+import hz.lift.model.rail.RailSettingResponse;
 
 @SpringBootTest
 class RailSettingServiceTest {
