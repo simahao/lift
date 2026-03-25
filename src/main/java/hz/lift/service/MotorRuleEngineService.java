@@ -1,7 +1,5 @@
 package hz.lift.service;
 
-import hz.lift.model.MotorSelectionRequest;
-import hz.lift.model.MotorSelectionResponse;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.RuleListener;
@@ -16,9 +14,13 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+
+import hz.lift.model.MotorSelectionRequest;
+import hz.lift.model.MotorSelectionResponse;
 
 @Service
 public class MotorRuleEngineService {
@@ -32,13 +34,13 @@ public class MotorRuleEngineService {
     public void init() {
         try {
             loadRulesFromYaml();
-            
+
             RulesEngineParameters parameters = new RulesEngineParameters()
                 .skipOnFirstAppliedRule(true)
                 .priorityThreshold(1000);
-            
+
             rulesEngine = new DefaultRulesEngine(parameters);
-            
+
             rulesEngine.registerRuleListener(new RuleListener() {
                 @Override
                 public boolean beforeEvaluate(Rule rule, Facts facts) {
@@ -66,7 +68,7 @@ public class MotorRuleEngineService {
                     logger.error("Rule execution failed: {}", rule.getName(), exception);
                 }
             });
-            
+
             logger.info("Easy Rules engine initialized successfully with {} rules", rules.size());
         } catch (Exception e) {
             logger.error("Failed to initialize rules engine", e);
@@ -80,7 +82,7 @@ public class MotorRuleEngineService {
             MVELRuleFactory ruleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
             rules = ruleFactory.createRules(reader);
             logger.info("Loaded {} rules from mada1-rules.yml", rules.size());
-            
+
             for (Rule rule : rules) {
                 logger.debug("Rule: {} - Priority: {}", rule.getName(), rule.getPriority());
             }
@@ -92,12 +94,12 @@ public class MotorRuleEngineService {
             return MotorSelectionResponse.of("NA", "Request is null", null);
         }
 
-        logger.info("Evaluating rules for: speed={}, q={}, tl={}, wgt={}", 
+        logger.info("Evaluating rules for: speed={}, q={}, tl={}, wgt={}",
             request.getSpeed(), request.getQ(), request.getTl(), request.getWgtActualExtraDecoTotal());
 
         Facts facts = new Facts();
         facts.put("request", request);
-        
+
         MotorResult result = new MotorResult();
         facts.put("result", result);
 

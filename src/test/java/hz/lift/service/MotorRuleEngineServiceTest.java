@@ -105,4 +105,69 @@ class MotorRuleEngineServiceTest {
         MotorSelectionResponse response = service.selectMotor(request);
         assertEquals("NA", response.getMotor());
     }
+
+    
+    @Test
+    void testSpeed1_Q2_TL_gt20_WGT_gt50() {
+        
+        MotorSelectionRequest req = new MotorSelectionRequest(
+            BigDecimal.valueOf(1),
+            BigDecimal.valueOf(450),
+            BigDecimal.valueOf(25),
+            BigDecimal.valueOf(60)
+        );
+        MotorSelectionResponse resp = service.selectMotor(req);
+        assertEquals("NMX07", resp.getMotor());
+    }
+
+    @Test
+    void testSpeed1_Q4_hmc_wgt150_tl25() {
+        
+        MotorSelectionRequest req = new MotorSelectionRequest(
+            BigDecimal.ONE,
+            BigDecimal.valueOf(550),
+            BigDecimal.valueOf(25),
+            BigDecimal.valueOf(150),
+            null,
+            null,
+            null,
+            true,
+            null,
+            null
+        );
+        MotorSelectionResponse resp = service.selectMotor(req);
+        assertEquals("NMX07", resp.getMotor());
+    }
+
+    @Test
+    void testSpeed3_Q7_NMX20() {
+        
+        MotorSelectionRequest req = new MotorSelectionRequest(
+            BigDecimal.valueOf(3),
+            BigDecimal.valueOf(950),
+            BigDecimal.valueOf(50),
+            BigDecimal.valueOf(700),
+            BigDecimal.valueOf(700),
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+        MotorSelectionResponse resp = service.selectMotor(req);
+        assertEquals("NMX20", resp.getMotor());
+    }
+
+    @Test
+    void testSpeed2_Q4_NMX11_1150() {
+        
+        MotorSelectionRequest req = new MotorSelectionRequest(
+            BigDecimal.valueOf(2),
+            BigDecimal.valueOf(550),
+            BigDecimal.valueOf(40),
+            BigDecimal.valueOf(200)
+        );
+        MotorSelectionResponse resp = service.selectMotor(req);
+        assertEquals("NMX11-1150", resp.getMotor());
+    }
 }
