@@ -1,0 +1,20 @@
+---
+name: "Rule1: TK5A/TK5A-1 and SPEED < 2.0"
+priority: 1
+condition: "(request.typCwtGr == 'TK5A' || request.typCwtGr == 'TK5A-1') && request.valRatedSpeed != null && request.valRatedSpeed < 2.0"
+actions:
+  - "result.result = 'NO'; result.matchedRule = 'Rule1';"
+
+---
+name: "Rule2: TK5A/TK5A-1 and SPEED >= 2.0"
+priority: 2
+condition: "(request.typCwtGr == 'TK5A' || request.typCwtGr == 'TK5A-1') && request.valRatedSpeed != null && request.valRatedSpeed >= 2.0"
+actions:
+  - "result.result = 'YES'; result.matchedRule = 'Rule2';"
+
+---
+name: "Default NA"
+priority: 1000
+condition: "true"
+actions:
+  - "result.result = 'NA'; result.matchedRule = 'No matching rule';"
