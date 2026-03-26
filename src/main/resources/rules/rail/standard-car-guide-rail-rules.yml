@@ -1,0 +1,48 @@
+---
+name: "Rule1: QTY_CAR_GR_VARIABLE > 0 and TYP_CAR_GR in list1"
+priority: 1
+condition: "request.qtyCarGrVariable != null && request.qtyCarGrVariable > 0 && (request.typCarGr == 'T70-1/B' || request.typCarGr == 'T75-3/B' || request.typCarGr == 'T75-4/B' || request.typCarGr == 'T82-1/B' || request.typCarGr == 'T82/B' || request.typCarGr == 'T89/B' || request.typCarGr == 'T89-1/B' || request.typCarGr == 'T89-2/B' || request.typCarGr == 'T90/B' || request.typCarGr == 'T114/B' || request.typCarGr == 'T125/B' || request.typCarGr == 'T127-1/B' || request.typCarGr == 'T127-2/B' || request.typCarGr == 'T140-1/B' || request.typCarGr == 'T140-2/B' || request.typCarGr == 'T140-3/B')"
+actions:
+  - "result.result1 = 'en:GUIDE RAIL, STD FULL LENGTH'; result.result2 = 'KMC732630H01/G'; result.matchedRule = 'Rule1';"
+
+---
+name: "Rule2: QTY_CAR_GR_HALF > 0 and TYP_CAR_GR in list1"
+priority: 2
+condition: "request.qtyCarGrHalf != null && request.qtyCarGrHalf > 0 && (request.typCarGr == 'T70-1/B' || request.typCarGr == 'T75-3/B' || request.typCarGr == 'T75-4/B' || request.typCarGr == 'T82-1/B' || request.typCarGr == 'T82/B' || request.typCarGr == 'T89/B' || request.typCarGr == 'T89-1/B' || request.typCarGr == 'T89-2/B' || request.typCarGr == 'T90/B' || request.typCarGr == 'T114/B' || request.typCarGr == 'T125/B' || request.typCarGr == 'T127-1/B' || request.typCarGr == 'T127-2/B' || request.typCarGr == 'T140-1/B' || request.typCarGr == 'T140-2/B' || request.typCarGr == 'T140-3/B')"
+actions:
+  - "result.result1 = 'en:GUIDE RAIL, STD FULL LENGTH'; result.result2 = 'KMC732630H01/G'; result.matchedRule = 'Rule2';"
+
+---
+name: "Rule3: QTY_CAR_GR_STANDARD > 0 and TYP_CAR_GR in list1"
+priority: 3
+condition: "request.qtyCarGrStandard != null && request.qtyCarGrStandard > 0 && (request.typCarGr == 'T70-1/B' || request.typCarGr == 'T75-3/B' || request.typCarGr == 'T75-4/B' || request.typCarGr == 'T82-1/B' || request.typCarGr == 'T82/B' || request.typCarGr == 'T89/B' || request.typCarGr == 'T89-1/B' || request.typCarGr == 'T89-2/B' || request.typCarGr == 'T90/B' || request.typCarGr == 'T114/B' || request.typCarGr == 'T125/B' || request.typCarGr == 'T127-1/B' || request.typCarGr == 'T127-2/B' || request.typCarGr == 'T140-1/B' || request.typCarGr == 'T140-2/B' || request.typCarGr == 'T140-3/B')"
+actions:
+  - "result.result1 = 'en:GUIDE RAIL, STD FULL LENGTH'; result.result2 = 'KMC732630H01/G'; result.matchedRule = 'Rule3';"
+
+---
+name: "Rule4: QTY_CAR_GR_VARIABLE > 0 and TYP_CAR_GR = T75/B"
+priority: 4
+condition: "request.qtyCarGrVariable != null && request.qtyCarGrVariable > 0 && request.typCarGr == 'T75/B'"
+actions:
+  - "result.result1 = 'en:GUIDE RAIL, STD FULL LENGTH'; result.result2 = 'KM52242444V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule5: QTY_CAR_GR_HALF > 0 and TYP_CAR_GR = T75/B"
+priority: 5
+condition: "request.qtyCarGrHalf != null && request.qtyCarGrHalf > 0 && request.typCarGr == 'T75/B'"
+actions:
+  - "result.result1 = 'en:GUIDE RAIL, STD FULL LENGTH'; result.result2 = 'KM52242444V000'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule6: QTY_CAR_GR_STANDARD > 0 and TYP_CAR_GR = T75/B"
+priority: 6
+condition: "request.qtyCarGrStandard != null && request.qtyCarGrStandard > 0 && request.typCarGr == 'T75/B'"
+actions:
+  - "result.result1 = 'en:GUIDE RAIL, STD FULL LENGTH'; result.result2 = 'KM52242444V000'; result.matchedRule = 'Rule6';"
+
+---
+name: "Default NA"
+priority: 1000
+condition: "true"
+actions:
+  - "result.result1 = 'NA'; result.result2 = 'NA'; result.matchedRule = 'No matching rule';"
