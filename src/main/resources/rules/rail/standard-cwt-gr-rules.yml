@@ -1,0 +1,209 @@
+---
+name: "Rule1: VAR_A_LENGTH > 0 and TYP_CWT_GR in list1"
+priority: 1
+condition: "request.qtyGrCwtVarALength != null && request.qtyGrCwtVarALength > 0 && (request.typCwtGr == 'T70-1/B' || request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T75-4/B' || request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T82/B' || request.typCwtGr == 'T82-2/B' || request.typCwtGr == 'T89/B' || request.typCwtGr == 'T89-1/B' || request.typCwtGr == 'T90/B' || request.typCwtGr == 'T114/B' || request.typCwtGr == 'T125/B' || request.typCwtGr == 'T127-1/B' || request.typCwtGr == 'T127-2/B' || request.typCwtGr == 'T140-1/B' || request.typCwtGr == 'T140-2/B' || request.typCwtGr == 'T140-3/B')"
+actions:
+  - "result.result = 'KMC732630H01/G'; result.matchedRule = 'Rule1';"
+
+---
+name: "Rule2: VAR_A_LENGTH > 0 and TYP_CWT_GR = T75/B"
+priority: 2
+condition: "request.qtyGrCwtVarALength != null && request.qtyGrCwtVarALength > 0 && request.typCwtGr == 'T75/B'"
+actions:
+  - "result.result = 'KM52242444V000'; result.matchedRule = 'Rule2';"
+
+---
+name: "Rule3: VAR_A_LENGTH > 0 and TYP_CWT_GR = TK5A"
+priority: 3
+condition: "request.qtyGrCwtVarALength != null && request.qtyGrCwtVarALength > 0 && request.typCwtGr == 'TK5A'"
+actions:
+  - "result.result = 'KMC741050H04/F'; result.matchedRule = 'Rule3';"
+
+---
+name: "Rule4: VAR_A_LENGTH > 0 and TYP_CWT_GR = HT60-1.5"
+priority: 4
+condition: "request.qtyGrCwtVarALength != null && request.qtyGrCwtVarALength > 0 && request.typCwtGr == 'HT60-1.5'"
+actions:
+  - "result.result = 'KMC51051908V001/A'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule5: VAR_A_LENGTH > 0 and TYP_CWT_GR = HT60"
+priority: 5
+condition: "request.qtyGrCwtVarALength != null && request.qtyGrCwtVarALength > 0 && request.typCwtGr == 'HT60'"
+actions:
+  - "result.result = 'KMC51054042V001/B'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule6: VAR_A_LENGTH > 0 and TYP_CWT_GR = HG65-2.0"
+priority: 6
+condition: "request.qtyGrCwtVarALength != null && request.qtyGrCwtVarALength > 0 && request.typCwtGr == 'HG65-2.0'"
+actions:
+  - "result.result = 'KMC51606436V001/-'; result.matchedRule = 'Rule6';"
+
+---
+name: "Rule7: VAR_A_LENGTH > 0 and TYP_CWT_GR = HG65"
+priority: 7
+condition: "request.qtyGrCwtVarALength != null && request.qtyGrCwtVarALength > 0 && request.typCwtGr == 'HG65'"
+actions:
+  - "result.result = 'KMC51419319V000/A'; result.matchedRule = 'Rule7';"
+
+---
+name: "Rule8: VAR_B_LENGTH > 0 and TYP_CWT_GR in list1"
+priority: 8
+condition: "request.qtyGrCwtVarBLength != null && request.qtyGrCwtVarBLength > 0 && (request.typCwtGr == 'T70-1/B' || request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T82/B' || request.typCwtGr == 'T82-2/B' || request.typCwtGr == 'T89/B' || request.typCwtGr == 'T89-1/B' || request.typCwtGr == 'T90/B' || request.typCwtGr == 'T114/B' || request.typCwtGr == 'T125/B' || request.typCwtGr == 'T127-1/B' || request.typCwtGr == 'T127-2/B' || request.typCwtGr == 'T140-1/B' || request.typCwtGr == 'T140-2/B' || request.typCwtGr == 'T140-3/B')"
+actions:
+  - "result.result = 'KMC732630H01/G'; result.matchedRule = 'Rule8';"
+
+---
+name: "Rule9: VAR_B_LENGTH > 0 and TYP_CWT_GR = T75/B"
+priority: 9
+condition: "request.qtyGrCwtVarBLength != null && request.qtyGrCwtVarBLength > 0 && request.typCwtGr == 'T75/B'"
+actions:
+  - "result.result = 'KM52242444V000'; result.matchedRule = 'Rule9';"
+
+---
+name: "Rule10: VAR_B_LENGTH > 0 and TYP_CWT_GR = TK5A"
+priority: 10
+condition: "request.qtyGrCwtVarBLength != null && request.qtyGrCwtVarBLength > 0 && request.typCwtGr == 'TK5A'"
+actions:
+  - "result.result = 'KMC741050H04/F'; result.matchedRule = 'Rule10';"
+
+---
+name: "Rule11: VAR_B_LENGTH > 0 and TYP_CWT_GR = HT60-1.5"
+priority: 11
+condition: "request.qtyGrCwtVarBLength != null && request.qtyGrCwtVarBLength > 0 && request.typCwtGr == 'HT60-1.5'"
+actions:
+  - "result.result = 'KMC51051908V001/A'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule12: VAR_B_LENGTH > 0 and TYP_CWT_GR = HT60"
+priority: 12
+condition: "request.qtyGrCwtVarBLength != null && request.qtyGrCwtVarBLength > 0 && request.typCwtGr == 'HT60'"
+actions:
+  - "result.result = 'KMC51054042V001/B'; result.matchedRule = 'Rule12';"
+
+---
+name: "Rule13: VAR_B_LENGTH > 0 and TYP_CWT_GR = HG65-2.0"
+priority: 13
+condition: "request.qtyGrCwtVarBLength != null && request.qtyGrCwtVarBLength > 0 && request.typCwtGr == 'HG65-2.0'"
+actions:
+  - "result.result = 'KMC51606436V001/-'; result.matchedRule = 'Rule13';"
+
+---
+name: "Rule14: VAR_B_LENGTH > 0 and TYP_CWT_GR = HG65"
+priority: 14
+condition: "request.qtyGrCwtVarBLength != null && request.qtyGrCwtVarBLength > 0 && request.typCwtGr == 'HG65'"
+actions:
+  - "result.result = 'KMC51419319V000/A'; result.matchedRule = 'Rule14';"
+
+---
+name: "Rule15: QTY_CWT_GR_HALF > 0 and TYP_CWT_GR in list1"
+priority: 15
+condition: "request.qtyCwtGrHalf != null && request.qtyCwtGrHalf > 0 && (request.typCwtGr == 'T70-1/B' || request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T82/B' || request.typCwtGr == 'T82-2/B' || request.typCwtGr == 'T89/B' || request.typCwtGr == 'T89-1/B' || request.typCwtGr == 'T90/B' || request.typCwtGr == 'T114/B' || request.typCwtGr == 'T125/B' || request.typCwtGr == 'T127-1/B' || request.typCwtGr == 'T127-2/B' || request.typCwtGr == 'T140-1/B' || request.typCwtGr == 'T140-2/B' || request.typCwtGr == 'T140-3/B')"
+actions:
+  - "result.result = 'KMC732630H01/G'; result.matchedRule = 'Rule15';"
+
+---
+name: "Rule17: QTY_CWT_GR_HALF > 0 and TYP_CWT_GR = TK5A"
+priority: 17
+condition: "request.qtyCwtGrHalf != null && request.qtyCwtGrHalf > 0 && request.typCwtGr == 'TK5A'"
+actions:
+  - "result.result = 'KMC741050H04/F'; result.matchedRule = 'Rule17';"
+
+---
+name: "Rule18: QTY_CWT_GR_HALF > 0 and TYP_CWT_GR = HT60-1.5"
+priority: 18
+condition: "request.qtyCwtGrHalf != null && request.qtyCwtGrHalf > 0 && request.typCwtGr == 'HT60-1.5'"
+actions:
+  - "result.result = 'KMC51051908V001/A'; result.matchedRule = 'Rule18';"
+
+---
+name: "Rule19: QTY_CWT_GR_HALF > 0 and TYP_CWT_GR = HT60"
+priority: 19
+condition: "request.qtyCwtGrHalf != null && request.qtyCwtGrHalf > 0 && request.typCwtGr == 'HT60'"
+actions:
+  - "result.result = 'KMC51054042V001/B'; result.matchedRule = 'Rule19';"
+
+---
+name: "Rule20: QTY_CWT_GR_HALF > 0 and TYP_CWT_GR = HG65-2.0"
+priority: 20
+condition: "request.qtyCwtGrHalf != null && request.qtyCwtGrHalf > 0 && request.typCwtGr == 'HG65-2.0'"
+actions:
+  - "result.result = 'KMC51606436V001/-'; result.matchedRule = 'Rule20';"
+
+---
+name: "Rule21: QTY_CWT_GR_HALF > 0 and TYP_CWT_GR = HG65"
+priority: 21
+condition: "request.qtyCwtGrHalf != null && request.qtyCwtGrHalf > 0 && request.typCwtGr == 'HG65'"
+actions:
+  - "result.result = 'KMC51419319V000/A'; result.matchedRule = 'Rule21';"
+
+---
+name: "Rule22: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR in list1"
+priority: 22
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && (request.typCwtGr == 'T70-1/B' || request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T82/B' || request.typCwtGr == 'T82-2/B' || request.typCwtGr == 'T89/B' || request.typCwtGr == 'T89-1/B' || request.typCwtGr == 'T90/B' || request.typCwtGr == 'T114/B' || request.typCwtGr == 'T125/B' || request.typCwtGr == 'T127-1/B' || request.typCwtGr == 'T127-2/B' || request.typCwtGr == 'T140-1/B' || request.typCwtGr == 'T140-2/B' || request.typCwtGr == 'T140-3/B')"
+actions:
+  - "result.result = 'KMC732630H01/G'; result.matchedRule = 'Rule22';"
+
+---
+name: "Rule23: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR = T75/B"
+priority: 23
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && request.typCwtGr == 'T75/B'"
+actions:
+  - "result.result = 'KM52242444V000'; result.matchedRule = 'Rule23';"
+
+---
+name: "Rule24: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR = TK5A and DIM=5000"
+priority: 24
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && request.typCwtGr == 'TK5A' && request.dimCwtGrLengthStandard != null && request.dimCwtGrLengthStandard == 5000"
+actions:
+  - "result.result = 'KMC741050H01/F'; result.matchedRule = 'Rule24';"
+
+---
+name: "Rule25: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR = TK5A and DIM=2500"
+priority: 25
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && request.typCwtGr == 'TK5A' && request.dimCwtGrLengthStandard != null && request.dimCwtGrLengthStandard == 2500"
+actions:
+  - "result.result = 'KMC741050H04/F'; result.matchedRule = 'Rule25';"
+
+---
+name: "Rule26: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR = HT60-1.5"
+priority: 26
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && request.typCwtGr == 'HT60-1.5'"
+actions:
+  - "result.result = 'KMC51051908V001/A'; result.matchedRule = 'Rule26';"
+
+---
+name: "Rule27: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR = HT60"
+priority: 27
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && request.typCwtGr == 'HT60'"
+actions:
+  - "result.result = 'KMC51054042V001/B'; result.matchedRule = 'Rule27';"
+
+---
+name: "Rule28: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR = HG65-2.0"
+priority: 28
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && request.typCwtGr == 'HG65-2.0'"
+actions:
+  - "result.result = 'KMC51606436V001/-'; result.matchedRule = 'Rule28';"
+
+---
+name: "Rule29: QTY_CWT_GR_STANDARD > 0 and TYP_CWT_GR = HG65"
+priority: 29
+condition: "request.qtyCwtGrStandard != null && request.qtyCwtGrStandard > 0 && request.typCwtGr == 'HG65'"
+actions:
+  - "result.result = 'KMC51419319V000/A'; result.matchedRule = 'Rule29';"
+
+---
+name: "Rule30: TYP_CWT_GR = HG65-2.0 or HG65"
+priority: 30
+condition: "request.typCwtGr == 'HG65-2.0' || request.typCwtGr == 'HG65'"
+actions:
+  - "result.result = 'KM51686769V000/B'; result.matchedRule = 'Rule30';"
+
+---
+name: "Default NA"
+priority: 1000
+condition: "true"
+actions:
+  - "result.result = 'NA'; result.matchedRule = 'No matching rule';"
