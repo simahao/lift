@@ -1,0 +1,90 @@
+---
+name: "Rule1: TYP_CWT_GR = T70-1/B"
+priority: 1
+condition: "request.typCwtGr == 'T70-1/B'"
+actions:
+  - "result.result = 'KMC51020078V000'; result.matchedRule = 'Rule1';"
+
+---
+name: "Rule2: T75/T82/T89 + NMX11 + not 2 + PWS3"
+priority: 2
+condition: "(request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T75-4/B' || request.typCwtGr == 'T75/B' || request.typCwtGr == 'T82/B' || request.typCwtGr == 'T82-2/B' || request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T89/B') && request.typMacHoisting == 'NMX11' && request.typEaqPackage != '2' && request.typProductModel == 'PWS3'"
+actions:
+  - "result.result = 'KMC51020078V000'; result.matchedRule = 'Rule2';"
+
+---
+name: "Rule3: T75/T82/T89 + NMX11 + not 2 + PWS4"
+priority: 3
+condition: "(request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T75-4/B' || request.typCwtGr == 'T75/B' || request.typCwtGr == 'T82/B' || request.typCwtGr == 'T82-2/B' || request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T89/B') && request.typMacHoisting == 'NMX11' && request.typEaqPackage != '2' && request.typProductModel == 'PWS4'"
+actions:
+  - "result.result = 'KMC51282093V003'; result.matchedRule = 'Rule3';"
+
+---
+name: "Rule4: T82-1/T75/T89 + NMX05/07/08/11 + height<=90000 + not 2 + not PWS3/PWS4"
+priority: 4
+condition: "(request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T75-4/B' || request.typCwtGr == 'T75/B' || request.typCwtGr == 'T89/B') && (request.typMacHoisting == 'NMX05' || request.typMacHoisting == 'NMX07' || request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.dimTravelHeightH != null && request.dimTravelHeightH <= 90000 && request.typEaqPackage != '2' && request.typProductModel != 'PWS3' && request.typProductModel != 'PWS4'"
+actions:
+  - "result.result = 'KMC51020078V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule5: T82-1/T75/T89 + NMX11 + height>90000 + not 2"
+priority: 5
+condition: "(request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T75-4/B' || request.typCwtGr == 'T75/B' || request.typCwtGr == 'T89/B') && request.typMacHoisting == 'NMX11' && request.dimTravelHeightH != null && request.dimTravelHeightH > 90000 && request.typEaqPackage != '2'"
+actions:
+  - "result.result = 'KMC51434821V004'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule6: T89/B + NMX11 + EAQ=2 + not PWS3/PWS4"
+priority: 6
+condition: "request.typCwtGr == 'T89/B' && request.typMacHoisting == 'NMX11' && request.typEaqPackage == '2' && request.typProductModel != 'PWS3' && request.typProductModel != 'PWS4'"
+actions:
+  - "result.result = 'KMC51020078V000'; result.matchedRule = 'Rule6';"
+
+---
+name: "Rule7: T75/T82-1/T89-1/T89-2 + MX14/MX14E/NMX14/NMX14S"
+priority: 7
+condition: "(request.typCwtGr == 'T75-3/B' || request.typCwtGr == 'T75-4/B' || request.typCwtGr == 'T75/B' || request.typCwtGr == 'T82-1/B' || request.typCwtGr == 'T89-1/B' || request.typCwtGr == 'T89-2/B') && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S')"
+actions:
+  - "result.result = 'KMC51282093V003'; result.matchedRule = 'Rule7';"
+
+---
+name: "Rule8: T82/T82-2/T89 + MX14/MX20/MX14E/NMX14S/MX20E/NMX14/NMX20 + not 2"
+priority: 8
+condition: "(request.typCwtGr == 'T82/B' || request.typCwtGr == 'T82-2/B' || request.typCwtGr == 'T89/B') && (request.typMacHoisting == 'MX14' || request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'NMX14S' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX20') && request.typEaqPackage != '2'"
+actions:
+  - "result.result = 'KMC51282093V003'; result.matchedRule = 'Rule8';"
+
+---
+name: "Rule9: T114/B + MX20/MX20E/NMX20 + not 2"
+priority: 9
+condition: "request.typCwtGr == 'T114/B' && (request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20') && request.typEaqPackage != '2'"
+actions:
+  - "result.result = 'KMC51282093V003'; result.matchedRule = 'Rule9';"
+
+---
+name: "Rule10: T125/B + MX20/MX20E/NMX20 + EAQ=2"
+priority: 10
+condition: "request.typCwtGr == 'T125/B' && (request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20') && request.typEaqPackage == '2'"
+actions:
+  - "result.result = 'KMC51282093V003'; result.matchedRule = 'Rule10';"
+
+---
+name: "Rule11: T89-1/T89-2/T89 + not MX/MX14/MX20 + height<=90000 + not 2"
+priority: 11
+condition: "(request.typCwtGr == 'T89-1/B' || request.typCwtGr == 'T89-2/B' || request.typCwtGr == 'T89/B') && !(request.typMacHoisting == 'MX14' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S' || request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20') && request.dimTravelHeightH != null && request.dimTravelHeightH <= 90000 && request.typEaqPackage != '2'"
+actions:
+  - "result.result = 'KMC51020078V000'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule12: T89-1/T89-2/T89 + not MX/MX14/MX20 + height>90000 + not 2"
+priority: 12
+condition: "(request.typCwtGr == 'T89-1/B' || request.typCwtGr == 'T89-2/B' || request.typCwtGr == 'T89/B') && !(request.typMacHoisting == 'MX14' || request.typMacHoisting == 'NMX14' || request.typMacHoisting == 'NMX14S' || request.typMacHoisting == 'MX20' || request.typMacHoisting == 'MX14E' || request.typMacHoisting == 'MX20E' || request.typMacHoisting == 'NMX20') && request.dimTravelHeightH != null && request.dimTravelHeightH > 90000 && request.typEaqPackage != '2'"
+actions:
+  - "result.result = 'KMC51434811V001'; result.matchedRule = 'Rule12';"
+
+---
+name: "Default NA"
+priority: 1000
+condition: "true"
+actions:
+  - "result.result = 'NA'; result.matchedRule = 'No matching rule';"
