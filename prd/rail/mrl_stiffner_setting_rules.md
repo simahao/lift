@@ -1,0 +1,5 @@
+| Condition                 | Condition                      | Condition                             | Condition                                   | result         |
+| ------------------------- | ------------------------------ | ------------------------------------- | ------------------------------------------- | -------------- |
+| TYP_PRODUCT_MODEL = "PWE" | WGT_RATED_LOAD_Q = 630         | TYP_MAC_HOISTING in ("NMX08","NMX11") | TYP_CAR_GR in ("T82/B","T82-1/B","T75-4/B") | KM51060009V000 |
+| TYP_PRODUCT_MODEL = "PWE" | WGT_RATED_LOAD_Q = 800         | TYP_MAC_HOISTING in ("NMX08","NMX11") | TYP_CAR_GR in ("T82/B","T82-1/B","T75-4/B") | KM51060009V000 |
+| TYP_PRODUCT_MODEL = "PWE" | WGT_RATED_LOAD_Q in (900,1000) | TYP_MAC_HOISTING in ("NMX08","NMX11") | TYP_CAR_GR in ("T82/B","T82-1/B","T75-4/B") | KM51060009V000 |

@@ -1,0 +1,90 @@
+---
+name: "Rule1: PWE + WGT=630 + NMX08/NMX11 + T82/B"
+priority: 1
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 630 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule1';"
+
+---
+name: "Rule2: PWE + WGT=630 + NMX08/NMX11 + T82-1/B"
+priority: 2
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 630 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82-1/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule2';"
+
+---
+name: "Rule3: PWE + WGT=630 + NMX08/NMX11 + T75-4/B"
+priority: 3
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 630 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T75-4/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule3';"
+
+---
+name: "Rule4: PWE + WGT=800 + NMX08/NMX11 + T82/B"
+priority: 4
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 800 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule5: PWE + WGT=800 + NMX08/NMX11 + T82-1/B"
+priority: 5
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 800 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82-1/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule6: PWE + WGT=800 + NMX08/NMX11 + T75-4/B"
+priority: 6
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 800 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T75-4/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule6';"
+
+---
+name: "Rule7: PWE + WGT=900 + NMX08/NMX11 + T82/B"
+priority: 7
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 900 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule7';"
+
+---
+name: "Rule8: PWE + WGT=900 + NMX08/NMX11 + T82-1/B"
+priority: 8
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 900 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82-1/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule8';"
+
+---
+name: "Rule9: PWE + WGT=900 + NMX08/NMX11 + T75-4/B"
+priority: 9
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 900 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T75-4/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule9';"
+
+---
+name: "Rule10: PWE + WGT=1000 + NMX08/NMX11 + T82/B"
+priority: 10
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 1000 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule10';"
+
+---
+name: "Rule11: PWE + WGT=1000 + NMX08/NMX11 + T82-1/B"
+priority: 11
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 1000 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T82-1/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule12: PWE + WGT=1000 + NMX08/NMX11 + T75-4/B"
+priority: 12
+condition: "request.typProductModel == 'PWE' && request.wgtRatedLoadQ == 1000 && (request.typMacHoisting == 'NMX08' || request.typMacHoisting == 'NMX11') && request.typCarGr == 'T75-4/B'"
+actions:
+  - "result.result = 'KM51060009V000'; result.matchedRule = 'Rule12';"
+
+---
+name: "Default NA"
+priority: 1000
+condition: "true"
+actions:
+  - "result.result = 'NA'; result.matchedRule = 'No matching rule';"
