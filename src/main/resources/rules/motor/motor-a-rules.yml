@@ -1,0 +1,1637 @@
+---
+name: "Rule1: T7007_2022 + not YES -> NMX07 for Q<=400"
+priority: 1
+condition: "request.q != null && request.q <= 400 && request.t7007_2022 != null && request.t7007_2022 == true && request.typElevTsgT7001_2023Regist != null && request.typElevTsgT7001_2023Regist != 'YES'"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule1';"
+
+---
+name: "Rule2: T7007_2022 + not YES -> NMX07 for Q 400-450 TL<=20 deco>50"
+priority: 2
+condition: "request.q > 400 && request.q <= 450 && request.tl != null && request.tl <= 20 && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50 && request.t7007_2022 != null && request.t7007_2022 == true && request.typElevTsgT7001_2023Regist != null && request.typElevTsgT7001_2023Regist != 'YES'"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule2';"
+
+---
+name: "Rule3: T7007_2022 + not YES -> NMX07 for Q 400-450 TL>20"
+priority: 3
+condition: "request.q > 400 && request.q <= 450 && request.tl != null && request.tl > 20 && request.t7007_2022 != null && request.t7007_2022 == true && request.typElevTsgT7001_2023Regist != null && request.typElevTsgT7001_2023Regist != 'YES'"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule3';"
+
+---
+name: "Rule4: T7007_2022 + not YES -> NMX07 for Q 450-480 TL<=20 deco>50"
+priority: 4
+condition: "request.q > 450 && request.q <= 480 && request.tl != null && request.tl <= 20 && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50 && request.t7007_2022 != null && request.t7007_2022 == true && request.typElevTsgT7001_2023Regist != null && request.typElevTsgT7001_2023Regist != 'YES'"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule5: T7007_2022 + not YES -> NMX07 for Q 450-480 TL>20"
+priority: 5
+condition: "request.q > 450 && request.q <= 480 && request.tl != null && request.tl > 20 && request.t7007_2022 != null && request.t7007_2022 == true && request.typElevTsgT7001_2023Regist != null && request.typElevTsgT7001_2023Regist != 'YES'"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule6: KDM40 + NMX08 -> NMX11 for speed 1.75 Q 500-630"
+priority: 6
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.kdm40 != null && request.wgtActualExtraDecoTotal != null && ((request.tl != null && request.tl <= 25 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 150) || (request.tl != null && request.tl <= 25 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 100) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350))"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule6';"
+
+---
+name: "Rule7: KDM40 + NMX08 -> NMX11 for speed 1.6 Q 500-630"
+priority: 7
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.kdm40 != null && request.wgtActualExtraDecoTotal != null && ((request.tl != null && request.tl <= 25 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 150) || (request.tl != null && request.tl <= 25 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 100) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350))"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule7';"
+
+---
+name: "Rule8: KDM40 + NMX08 -> NMX11 for speed 1.0 Q 480-500"
+priority: 8
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.kdm40 != null && request.wgtActualExtraDecoTotal != null && ((request.tl != null && request.tl <= 25 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 150) || (request.tl != null && request.tl <= 25 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 100) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350))"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule8';"
+
+---
+name: "Rule8b: KDM40 + NMX08 -> NMX11 for speed 1.0 Q 400-500"
+priority: 8
+condition: "request.speed == 1.0 && request.q > 400 && request.q <= 500 && request.kdm40 != null"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule8b';"
+
+---
+name: "Rule8c: KDM40 + NMX08 -> NMX11 for speed 1.75 Q 500-630"
+priority: 8
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.kdm40 != null"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule8c';"
+
+---
+name: "Rule8d: KDM40 + NMX08 -> NMX11 for speed 1.6 Q 500-630"
+priority: 8
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.kdm40 != null"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule8d';"
+
+---
+name: "Rule9: Imported + NMX08 -> NMX11 for speed 1.75 Q 500-630"
+priority: 9
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.imported != null && request.imported == true && request.wgtActualExtraDecoTotal != null && ((request.tl != null && request.tl <= 25 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 150) || (request.tl != null && request.tl <= 25 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 100) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350))"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule9';"
+
+---
+name: "Rule10: Imported + NMX08 -> NMX11 for speed 1.6 Q 500-630"
+priority: 10
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.imported != null && request.imported == true && request.wgtActualExtraDecoTotal != null && ((request.tl != null && request.tl <= 25 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 150) || (request.tl != null && request.tl <= 25 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 100) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350) || (request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != 'HMC car' && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350))"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule10';"
+
+---
+name: "Rule6: KDM40 -> NMX11 for Q 500-630"
+priority: 6
+condition: "request.q > 500 && request.q <= 630 && request.kdm40 != null"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule6';"
+
+---
+name: "Rule8b: KDM40 -> NMX11 for Q 400-500"
+priority: 8
+condition: "request.q > 400 && request.q <= 500 && request.kdm40 != null"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule8b';"
+
+---
+name: "Rule8c: KDM40 -> NMX11 for Q 500-630"
+priority: 8
+condition: "request.q > 500 && request.q <= 630 && request.kdm40 != null"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule8c';"
+
+---
+name: "Rule9: Imported -> NMX11 for Q 500-630"
+priority: 9
+condition: "request.q > 500 && request.q <= 630 && request.imported != null && request.imported == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule9';"
+
+---
+name: "Rule11b: Imported -> NMX11 for Q 400-500"
+priority: 11
+condition: "request.q > 400 && request.q <= 500 && request.imported != null && request.imported == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule11b';"
+
+---
+name: "Rule11c: Imported -> NMX11 for Q 500-630"
+priority: 11
+condition: "request.q > 500 && request.q <= 630 && request.imported != null && request.imported == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule11c';"
+
+---
+name: "Rule11d: Imported + NMX08 -> NMX11 for speed 1.6 Q 500-630"
+priority: 11
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.imported != null && request.imported == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule11d';"
+
+---
+name: "Rule12: EN81-77_C1 -> NMX11 for Q<=400"
+priority: 12
+condition: "request.q != null && request.q <= 400 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule12';"
+
+---
+name: "Rule13: EN81-77_C1 -> NMX11 for Q 400-450"
+priority: 13
+condition: "request.q > 400 && request.q <= 450 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule13';"
+
+---
+name: "Rule14: EN81-77_C1 -> NMX11 for Q 450-500"
+priority: 14
+condition: "request.q > 450 && request.q <= 500 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule14';"
+
+---
+name: "Rule15: EN81-77_C1 -> NMX11 for Q 500-630"
+priority: 15
+condition: "request.q > 500 && request.q <= 630 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule15';"
+
+---
+name: "Rule15b: EN81-77_C1 -> NMX11 for Q 500-630 TL>55"
+priority: 15
+condition: "request.q > 500 && request.q <= 630 && request.en81_77_c1 != null && request.en81_77_c1 == true && request.tl != null && request.tl > 55"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule15b';"
+
+---
+name: "Rule15c: EN81-77_C1 -> NMX11 for Q 500-630 SEC"
+priority: 15
+condition: "request.q > 500 && request.q <= 630 && request.en81_77_c1 != null && request.en81_77_c1 == true && request.openType != null && request.openType == 'SEC'"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule15c';"
+
+---
+name: "Rule16: EN81-77_C1 -> NMX11 for Q<=400"
+priority: 16
+condition: "request.q != null && request.q <= 400 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule16';"
+
+---
+name: "Rule17: EN81-77_C1 -> NMX11 for Q 400-450"
+priority: 17
+condition: "request.q > 400 && request.q <= 450 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule17';"
+
+---
+name: "Rule18: EN81-77_C1 -> NMX11 for Q 450-500"
+priority: 18
+condition: "request.q > 450 && request.q <= 500 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule18';"
+
+---
+name: "Rule19: EN81-77_C1 -> NMX11 for Q 500-630"
+priority: 19
+condition: "request.q > 500 && request.q <= 630 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule19';"
+
+---
+name: "Rule20: EN81-77_C1 -> NMX11 for Q<=450"
+priority: 20
+condition: "request.q != null && request.q <= 450 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule20';"
+
+---
+name: "Rule21: EN81-77_C1 -> NMX11 for Q 450-480"
+priority: 21
+condition: "request.q > 450 && request.q <= 480 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule21';"
+
+---
+name: "Rule22: EN81-77_C1 -> NMX11 for Q 480-500"
+priority: 22
+condition: "request.q > 480 && request.q <= 500 && request.en81_77_c1 != null && request.en81_77_c1 == true"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule22';"
+
+---
+name: "Rule23: Speed 3.0, Q=885 SS550* -> use Q 900-1000 rules"
+priority: 23
+condition: "request.speed == 3.0 && request.q == 885.0 && request.xType == 'SS550*' && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule23';"
+
+---
+name: "Rule23b: Speed 2.5, Q=885 SS550* -> use Q 900-1000 rules"
+priority: 23
+condition: "request.speed == 2.5 && request.q == 885.0 && request.xType == 'SS550*' && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule23b';"
+
+---
+name: "Rule23c: Speed 2.0, Q=885 SS550* -> use Q 900-1000 rules"
+priority: 23
+condition: "request.speed == 2.0 && request.q == 885.0 && request.xType == 'SS550*' && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule23c';"
+
+---
+name: "Rule23d: Speed 1.75, Q=885 SS550* -> use Q 900-1000 rules"
+priority: 23
+condition: "request.speed == 1.75 && request.q == 885.0 && request.xType == 'SS550*' && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule23d';"
+
+---
+name: "Rule23e: Speed 1.6, Q=885 SS550* -> use Q 900-1000 rules"
+priority: 23
+condition: "request.speed == 1.6 && request.q == 885.0 && request.xType == 'SS550*' && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule23e';"
+
+---
+name: "Rule23f: Speed 1.0, Q=885 SS550* -> use Q 900-1000 rules"
+priority: 23
+condition: "request.speed == 1.0 && request.q == 885.0 && request.xType == 'SS550*' && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule23f';"
+
+---
+name: "Rule24: Speed 3.0, Q 800-900, deco<=780"
+priority: 24
+condition: "request.speed == 3.0 && request.q > 800 && request.q <= 900 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule2';"
+
+---
+name: "Rule3: Speed 3.0, Q 900-1000, SS550* Q=885, deco<=780"
+priority: 3
+condition: "request.speed == 3.0 && request.q > 900 && request.q <= 1000 && request.xType == 'SS550*' && request.q == 885 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule3';"
+
+---
+name: "Rule4: Speed 3.0, Q 900-1000, deco<=620"
+priority: 4
+condition: "request.speed == 3.0 && request.q > 900 && request.q <= 1000 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule4';"
+
+---
+name: "Rule5: Speed 3.0, Q 1000-1025, deco<=780"
+priority: 5
+condition: "request.speed == 3.0 && request.q > 1000 && request.q <= 1025 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule5';"
+
+---
+name: "Rule6: Speed 3.0, Q 1025-1050, deco<=780"
+priority: 6
+condition: "request.speed == 3.0 && request.q > 1025 && request.q <= 1050 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule6';"
+
+---
+name: "Rule6b: Speed 3.0, Q=1050 no deco limit"
+priority: 6
+condition: "request.speed == 3.0 && request.q == 1050"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule6b';"
+
+---
+name: "Rule7: Speed 3.0, Q 1050-1155, deco<=860"
+priority: 7
+condition: "request.speed == 3.0 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule7';"
+
+---
+name: "Rule8: Speed 3.0, Q 1200-1275, deco<=960"
+priority: 8
+condition: "request.speed == 3.0 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 960"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule8';"
+
+---
+name: "Rule9: Speed 3.0, Q 1275-1365, deco<=1030"
+priority: 9
+condition: "request.speed == 3.0 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 1030"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule9';"
+
+---
+name: "Rule10: Speed 3.0, Q 1365-1600"
+priority: 10
+condition: "request.speed == 3.0 && request.q > 1365 && request.q <= 1600"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule10';"
+
+---
+name: "Rule11: Speed 3.0, Q 1600-1800"
+priority: 11
+condition: "request.speed == 3.0 && request.q > 1600 && request.q <= 1800"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule11';"
+
+---
+name: "Rule12: Speed 2.5, Q 500-630"
+priority: 12
+condition: "request.speed == 2.5 && request.q > 500 && request.q <= 630"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule12';"
+
+---
+name: "Rule13: Speed 2.5, Q 630-800"
+priority: 13
+condition: "request.speed == 2.5 && request.q > 630 && request.q <= 800"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule13';"
+
+---
+name: "Rule14: Speed 2.5, Q 800-900, TL<=90, deco<=40%*Q"
+priority: 14
+condition: "request.speed == 2.5 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule14';"
+
+---
+name: "Rule15: Speed 2.5, Q 800-900, TL<=90, 40%*Q<deco<=740"
+priority: 15
+condition: "request.speed == 2.5 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 740"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule15';"
+
+---
+name: "Rule16: Speed 2.5, Q 800-900, TL>90, deco<=300"
+priority: 16
+condition: "request.speed == 2.5 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 300"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule16';"
+
+---
+name: "Rule17: Speed 2.5, Q 800-900, TL>90, 300<deco<=740"
+priority: 17
+condition: "request.speed == 2.5 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 300 && request.wgtCarDecorationTotal <= 740"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule17';"
+
+---
+name: "Rule18: Speed 2.5, Q 900-1000, TL<=90, deco<=620"
+priority: 18
+condition: "request.speed == 2.5 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule18';"
+
+---
+name: "Rule19: Speed 2.5, Q 900-1000, TL<=90, 620<deco<=780"
+priority: 19
+condition: "request.speed == 2.5 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule19';"
+
+---
+name: "Rule20: Speed 2.5, Q 900-1000, TL>90, deco<=300"
+priority: 20
+condition: "request.speed == 2.5 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 300"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule20';"
+
+---
+name: "Rule21: Speed 2.5, Q 900-1000, TL>90, 300<deco<=780"
+priority: 21
+condition: "request.speed == 2.5 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 300 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule21';"
+
+---
+name: "Rule22: Speed 2.5, Q 1050-1155, deco<=860"
+priority: 22
+condition: "request.speed == 2.5 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule22';"
+
+---
+name: "Rule23: Speed 2.5, Q 1275-1365, deco<=960"
+priority: 23
+condition: "request.speed == 2.5 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 960"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule23';"
+
+---
+name: "Rule24: Speed 2.5, Q 1365-1600, deco<=1190"
+priority: 24
+condition: "request.speed == 2.5 && request.q > 1365 && request.q <= 1600 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 1190"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule24';"
+
+---
+name: "Rule25: Speed 2.5, Q 1600-1800"
+priority: 25
+condition: "request.speed == 2.5 && request.q > 1600 && request.q <= 1800"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule25';"
+
+---
+name: "Rule26: Speed 2.5, Q 1800-2000"
+priority: 26
+condition: "request.speed == 2.5 && request.q > 1800 && request.q <= 2000"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule26';"
+
+---
+name: "Rule27: Speed 2.0, Q 450-500"
+priority: 27
+condition: "request.speed == 2.0 && request.q > 450 && request.q <= 500"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule27';"
+
+---
+name: "Rule28: Speed 2.0, Q 500-630"
+priority: 28
+condition: "request.speed == 2.0 && request.q > 500 && request.q <= 630"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule28';"
+
+---
+name: "Rule29: Speed 2.0, Q 630-800"
+priority: 29
+condition: "request.speed == 2.0 && request.q > 630 && request.q <= 800"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule29';"
+
+---
+name: "Rule30: Speed 2.0, Q 800-900, TL<=90, deco<=40%*Q"
+priority: 30
+condition: "request.speed == 2.0 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule30';"
+
+---
+name: "Rule31: Speed 2.0, Q 800-900, TL<=90, 40%*Q<deco<=740"
+priority: 31
+condition: "request.speed == 2.0 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 740"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule31';"
+
+---
+name: "Rule32: Speed 2.0, Q 800-900, TL>90, deco<=300"
+priority: 32
+condition: "request.speed == 2.0 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 300"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule32';"
+
+---
+name: "Rule33: Speed 2.0, Q 800-900, TL>90, 300<deco<=740"
+priority: 33
+condition: "request.speed == 2.0 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 300 && request.wgtCarDecorationTotal <= 740"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule33';"
+
+---
+name: "Rule34: Speed 2.0, Q 900-1000, TL<=90, deco<=620"
+priority: 34
+condition: "request.speed == 2.0 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule34';"
+
+---
+name: "Rule35: Speed 2.0, Q 900-1000, TL<=90, 620<deco<=780"
+priority: 35
+condition: "request.speed == 2.0 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule35';"
+
+---
+name: "Rule36: Speed 2.0, Q 900-1000, TL>90, deco<=300"
+priority: 36
+condition: "request.speed == 2.0 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 300"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule36';"
+
+---
+name: "Rule37: Speed 2.0, Q 900-1000, TL>90, 300<deco<=780"
+priority: 37
+condition: "request.speed == 2.0 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 300 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule37';"
+
+---
+name: "Rule38: Speed 2.0, Q 1025-1050, TL<=90, deco<=40%*Q"
+priority: 38
+condition: "request.speed == 2.0 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule38';"
+
+---
+name: "Rule39: Speed 2.0, Q 1025-1050, TL<=90, 40%*Q<deco<=860"
+priority: 39
+condition: "request.speed == 2.0 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule39';"
+
+---
+name: "Rule40: Speed 2.0, Q 1025-1050, TL>90, deco<=300"
+priority: 40
+condition: "request.speed == 2.0 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 300"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule40';"
+
+---
+name: "Rule41: Speed 2.0, Q 1025-1050, TL>90, 300<deco<=860"
+priority: 41
+condition: "request.speed == 2.0 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl > 90 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 300 && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule41';"
+
+---
+name: "Rule42: Speed 2.0, Q 1200-1275, deco<=40%*Q"
+priority: 42
+condition: "request.speed == 2.0 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX14'; result.matchedRule = 'Rule42';"
+
+---
+name: "Rule43: Speed 2.0, Q 1200-1275, 40%*Q<deco<960"
+priority: 43
+condition: "request.speed == 2.0 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal < 960"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule43';"
+
+---
+name: "Rule44: Speed 2.0, Q 1275-1365, deco<=40%*Q"
+priority: 44
+condition: "request.speed == 2.0 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX14'; result.matchedRule = 'Rule44';"
+
+---
+name: "Rule45: Speed 2.0, Q 1275-1365, 40%*Q<deco<1030"
+priority: 45
+condition: "request.speed == 2.0 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal < 1030"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule45';"
+
+---
+name: "Rule46: Speed 2.0, Q 1365-1600, deco<=1190"
+priority: 46
+condition: "request.speed == 2.0 && request.q > 1365 && request.q <= 1600 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 1190"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule46';"
+
+---
+name: "Rule47: Speed 2.0, Q 1600-1800"
+priority: 47
+condition: "request.speed == 2.0 && request.q > 1600 && request.q <= 1800"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule47';"
+
+---
+name: "Rule48: Speed 2.0, Q 1800-2000"
+priority: 48
+condition: "request.speed == 2.0 && request.q > 1800 && request.q <= 2000"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule48';"
+
+---
+name: "Rule49: Speed 1.75, Q <= 400"
+priority: 49
+condition: "request.speed == 1.75 && request.q != null && request.q <= 400"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule49';"
+
+---
+name: "Rule50: Speed 1.75, Q 400-450"
+priority: 50
+condition: "request.speed == 1.75 && request.q > 400 && request.q <= 450"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule50';"
+
+---
+name: "Rule51: Speed 1.75, Q 450-500 (exclusive)"
+priority: 51
+condition: "request.speed == 1.75 && request.q > 450 && request.q < 500"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule51';"
+
+---
+name: "Rule51b: Speed 1.75, Q=500 TL<=25 HMC deco<=150"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 150"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule51b';"
+
+---
+name: "Rule51c: Speed 1.75, Q=500 TL<=25 non-HMC deco<=100"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule51c';"
+
+---
+name: "Rule51d: Speed 1.75, Q=500 TL<=25 HMC deco>150"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 150"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule51d';"
+
+---
+name: "Rule51e: Speed 1.75, Q=500 TL<=25 non-HMC deco>100"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule51e';"
+
+---
+name: "Rule51f: Speed 1.75, Q=500 TL>25 TL<=55 HMC deco<=100"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule51f';"
+
+---
+name: "Rule51g: Speed 1.75, Q=500 TL>25 TL<=55 non-HMC deco<=50"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 50"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule51g';"
+
+---
+name: "Rule51h: Speed 1.75, Q=500 TL>25 TL<=55 HMC 100<deco<=350"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule51h';"
+
+---
+name: "Rule51i: Speed 1.75, Q=500 TL>25 TL<=55 non-HMC 50<deco<=350"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule51i';"
+
+---
+name: "Rule51j: Speed 1.75, Q=500 TL>75"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.tl != null && request.tl > 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule51j';"
+
+---
+name: "Rule51k: Speed 1.75, Q=500 TTC"
+priority: 51
+condition: "request.speed == 1.75 && request.q == 500.0 && request.openType != null && request.openType == 'TTC'"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule51k';"
+
+---
+name: "Rule51m: Speed 1.75, Q 500-630 TL>75"
+priority: 52
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule51m';"
+
+---
+name: "Rule51n: Speed 1.75, Q 500-630 TTC"
+priority: 52
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.openType != null && request.openType == 'TTC'"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule51n';"
+
+---
+name: "Rule51p: Speed 1.75, Q 500-630, TL<=75 default to NMX11-1000"
+priority: 52
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule51p';"
+
+---
+name: "Rule52: Speed 1.75, Q 500-630, NMX07 TL<=25 HMC deco<=150"
+priority: 52
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 150"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule52';"
+
+---
+name: "Rule53: Speed 1.75, Q 500-630, NMX07 TL<=25 non-HMC deco<=100"
+priority: 53
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule53';"
+
+---
+name: "Rule54: Speed 1.75, Q 500-630, NMX07 25<TL<=55 HMC deco<=100"
+priority: 54
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule54';"
+
+---
+name: "Rule55: Speed 1.75, Q 500-630, NMX07 25<TL<=55 non-HMC deco<=50"
+priority: 55
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 50"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule55';"
+
+---
+name: "Rule56: Speed 1.75, Q 500-630, NMX08 TL<=25 HMC deco>150"
+priority: 56
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 150"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule56';"
+
+---
+name: "Rule57: Speed 1.75, Q 500-630, NMX08 TL<=25 non-HMC deco>100"
+priority: 57
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule57';"
+
+---
+name: "Rule58: Speed 1.75, Q 500-630, NMX08 25<TL<=55 HMC 100<deco<=350"
+priority: 58
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule58';"
+
+---
+name: "Rule59: Speed 1.75, Q 500-630, NMX08 25<TL<=55 non-HMC 50<deco<=350"
+priority: 59
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule59';"
+
+---
+name: "Rule60: Speed 1.75, Q 500-630, NMX11-1000 55<TL<=75"
+priority: 60
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 55 && request.tl <= 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule60';"
+
+---
+name: "Rule61: Speed 1.75, Q 500-630, NMX11-1000 TL>75"
+priority: 61
+condition: "request.speed == 1.75 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule61';"
+
+---
+name: "Rule62: Speed 1.75, Q 630-800, NMX08 SEC TL<=60 extra<=150"
+priority: 62
+condition: "request.speed == 1.75 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl <= 60 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra <= 150"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule62';"
+
+---
+name: "Rule63: Speed 1.75, Q 630-800, NMX08 SEC 60<TL<=75 extra<=100"
+priority: 63
+condition: "request.speed == 1.75 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl > 60 && request.tl <= 75 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra <= 100"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule63';"
+
+---
+name: "Rule64: Speed 1.75, Q 630-800, NMX11-1000 SEC TL<=60 extra>150"
+priority: 64
+condition: "request.speed == 1.75 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl <= 60 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra > 150"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule64';"
+
+---
+name: "Rule65: Speed 1.75, Q 630-800, NMX11-1000 SEC 60<TL<=75 extra>100"
+priority: 65
+condition: "request.speed == 1.75 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl > 60 && request.tl <= 75 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra > 100"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule65';"
+
+---
+name: "Rule66: Speed 1.75, Q 630-800, NMX11-1000 TL>75"
+priority: 66
+condition: "request.speed == 1.75 && request.q > 630 && request.q <= 800 && request.tl != null && request.tl > 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule66';"
+
+---
+name: "Rule67: Speed 1.75, Q 630-800, NMX11-1000 TTC"
+priority: 67
+condition: "request.speed == 1.75 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'TTC'"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule67';"
+
+---
+name: "Rule68: Speed 1.75, Q 800-900, TL<=75, deco<=45%*Q"
+priority: 68
+condition: "request.speed == 1.75 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule68';"
+
+---
+name: "Rule69: Speed 1.75, Q 800-900, TL<=75, 35%*Q<deco<=585"
+priority: 69
+condition: "request.speed == 1.75 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.35 * request.q && request.wgtCarDecorationTotal <= 585"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule69';"
+
+---
+name: "Rule70: Speed 1.75, Q 800-900, TL<=75, 585<deco<=740"
+priority: 70
+condition: "request.speed == 1.75 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 585 && request.wgtCarDecorationTotal <= 740"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule70';"
+
+---
+name: "Rule70b: Speed 1.75, Q 800-900, TL<=75, 45%*Q<deco<=620"
+priority: 70
+condition: "request.speed == 1.75 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.45 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule70b';"
+
+---
+name: "Rule71: Speed 1.75, Q 800-900, TL>75, deco<=585"
+priority: 71
+condition: "request.speed == 1.75 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl > 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 585"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule71';"
+
+---
+name: "Rule72: Speed 1.75, Q 900-1000, TL<=75, deco<=45%*Q"
+priority: 72
+condition: "request.speed == 1.75 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule72';"
+
+---
+name: "Rule73: Speed 1.75, Q 900-1000, TL<=75, 45%*Q<deco<=620"
+priority: 73
+condition: "request.speed == 1.75 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.45 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule73';"
+
+---
+name: "Rule74: Speed 1.75, Q 900-1000, TL<=75, 620<deco<=780"
+priority: 74
+condition: "request.speed == 1.75 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule74';"
+
+---
+name: "Rule75: Speed 1.75, Q 900-1000, TL>75, deco<=620"
+priority: 75
+condition: "request.speed == 1.75 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl > 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule75';"
+
+---
+name: "Rule76: Speed 1.75, Q 1000-1025, deco<=350"
+priority: 76
+condition: "request.speed == 1.75 && request.q > 1000 && request.q <= 1025 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 350"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule76';"
+
+---
+name: "Rule77: Speed 1.75, Q 1025-1050, TL<=75, deco<=40%*Q"
+priority: 77
+condition: "request.speed == 1.75 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule77';"
+
+---
+name: "Rule78: Speed 1.75, Q 1025-1050, TL<=75, 40%*Q<deco<=860"
+priority: 78
+condition: "request.speed == 1.75 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule78';"
+
+---
+name: "Rule79: Speed 1.75, Q 1025-1050, TL>75, deco<=40%*Q"
+priority: 79
+condition: "request.speed == 1.75 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl > 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule79';"
+
+---
+name: "Rule80: Speed 1.75, Q 1050-1155, deco<=620"
+priority: 80
+condition: "request.speed == 1.75 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule80';"
+
+---
+name: "Rule81: Speed 1.75, Q 1050-1155, 620<deco<=780"
+priority: 81
+condition: "request.speed == 1.75 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule81';"
+
+---
+name: "Rule82: Speed 1.75, Q 1155-1200, deco<=350"
+priority: 82
+condition: "request.speed == 1.75 && request.q > 1155 && request.q <= 1200 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 350"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule82';"
+
+---
+name: "Rule83: Speed 1.75, Q 1200-1275, deco<=40%*Q"
+priority: 83
+condition: "request.speed == 1.75 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule83';"
+
+---
+name: "Rule84: Speed 1.75, Q 1200-1275, 40%*Q<deco<=860"
+priority: 84
+condition: "request.speed == 1.75 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule84';"
+
+---
+name: "Rule85: Speed 1.75, Q 1275-1365, deco<=40%*Q"
+priority: 85
+condition: "request.speed == 1.75 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule85';"
+
+---
+name: "Rule86: Speed 1.75, Q 1275-1365, 40%*Q<deco<=860"
+priority: 86
+condition: "request.speed == 1.75 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule86';"
+
+---
+name: "Rule87: Speed 1.75, Q 1365-1600"
+priority: 87
+condition: "request.speed == 1.75 && request.q > 1365 && request.q <= 1600"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule87';"
+
+---
+name: "Rule88: Speed 1.75, Q 1600-1800"
+priority: 88
+condition: "request.speed == 1.75 && request.q > 1600 && request.q <= 1800"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule88';"
+
+---
+name: "Rule89: Speed 1.6, Q <= 400"
+priority: 89
+condition: "request.speed == 1.6 && request.q != null && request.q <= 400"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule89';"
+
+---
+name: "Rule90: Speed 1.6, Q 400-450"
+priority: 90
+condition: "request.speed == 1.6 && request.q > 400 && request.q <= 450"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule90';"
+
+---
+name: "Rule91: Speed 1.6, Q 450-500"
+priority: 91
+condition: "request.speed == 1.6 && request.q > 450 && request.q <= 500"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule91';"
+
+---
+name: "Rule92: Speed 1.6, Q 500-630, NMX07 TL<=25 HMC deco<=150"
+priority: 92
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 150"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule92';"
+
+---
+name: "Rule93: Speed 1.6, Q 500-630, NMX07 TL<=25 non-HMC deco<=100"
+priority: 93
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule93';"
+
+---
+name: "Rule94: Speed 1.6, Q 500-630, NMX07 25<TL<=55 HMC deco<=100"
+priority: 94
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule94';"
+
+---
+name: "Rule95: Speed 1.6, Q 500-630, NMX07 25<TL<=55 non-HMC deco<=50"
+priority: 95
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 50"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule95';"
+
+---
+name: "Rule96: Speed 1.6, Q 500-630, NMX08 TL<=25 HMC deco>150"
+priority: 96
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 150"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule96';"
+
+---
+name: "Rule97: Speed 1.6, Q 500-630, NMX08 TL<=25 non-HMC deco>100"
+priority: 97
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule97';"
+
+---
+name: "Rule98: Speed 1.6, Q 500-630, NMX08 25<TL<=55 HMC 100<deco<=350"
+priority: 98
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule98';"
+
+---
+name: "Rule99: Speed 1.6, Q 500-630, NMX08 25<TL<=55 non-HMC 50<deco<=350"
+priority: 99
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule99';"
+
+---
+name: "Rule100: Speed 1.6, Q 500-630, NMX11-1000 55<TL<=75"
+priority: 100
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 55 && request.tl <= 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule100';"
+
+---
+name: "Rule101: Speed 1.6, Q 500-630, NMX11-1000 TL>75"
+priority: 101
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl > 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule101';"
+
+---
+name: "Rule101b: Speed 1.6, Q 500-630, TL<=75 default to NMX11-1000"
+priority: 101
+condition: "request.speed == 1.6 && request.q > 500 && request.q <= 630 && request.tl != null && request.tl <= 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule101b';"
+
+---
+name: "Rule102: Speed 1.6, Q 630-800, NMX08 SEC TL<=60 extra<=150"
+priority: 102
+condition: "request.speed == 1.6 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl <= 60 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra <= 150"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule102';"
+
+---
+name: "Rule103: Speed 1.6, Q 630-800, NMX08 SEC 60<TL<=75 extra<=100"
+priority: 103
+condition: "request.speed == 1.6 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl > 60 && request.tl <= 75 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra <= 100"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule103';"
+
+---
+name: "Rule104: Speed 1.6, Q 630-800, NMX11-1000 SEC TL<=60 extra>150"
+priority: 104
+condition: "request.speed == 1.6 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl <= 60 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra > 150"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule104';"
+
+---
+name: "Rule105: Speed 1.6, Q 630-800, NMX11-1000 SEC 60<TL<=75 extra>100"
+priority: 105
+condition: "request.speed == 1.6 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'SEC' && request.tl != null && request.tl > 60 && request.tl <= 75 && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra > 100"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule105';"
+
+---
+name: "Rule106: Speed 1.6, Q 630-800, NMX11-1000 TL>75"
+priority: 106
+condition: "request.speed == 1.6 && request.q > 630 && request.q <= 800 && request.tl != null && request.tl > 75"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule106';"
+
+---
+name: "Rule107: Speed 1.6, Q 630-800, NMX11-1000 TTC"
+priority: 107
+condition: "request.speed == 1.6 && request.q > 630 && request.q <= 800 && request.openType != null && request.openType == 'TTC'"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule107';"
+
+---
+name: "Rule108: Speed 1.6, Q 800-900, TL<=75, deco<=45%*Q"
+priority: 108
+condition: "request.speed == 1.6 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule108';"
+
+---
+name: "Rule109: Speed 1.6, Q 800-900, TL<=75, 35%*Q<deco<=585"
+priority: 109
+condition: "request.speed == 1.6 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.35 * request.q && request.wgtCarDecorationTotal <= 585"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule109';"
+
+---
+name: "Rule110: Speed 1.6, Q 800-900, TL<=75, 585<deco<=740"
+priority: 110
+condition: "request.speed == 1.6 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 585 && request.wgtCarDecorationTotal <= 740"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule110';"
+
+---
+name: "Rule111: Speed 1.6, Q 800-900, TL>75, deco<=585"
+priority: 111
+condition: "request.speed == 1.6 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl > 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 585"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule111';"
+
+---
+name: "Rule112: Speed 1.6, Q 900-1000, TL<=75, deco<=45%*Q"
+priority: 112
+condition: "request.speed == 1.6 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule112';"
+
+---
+name: "Rule113: Speed 1.6, Q 900-1000, TL<=75, 45%*Q<deco<=620"
+priority: 113
+condition: "request.speed == 1.6 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.45 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule113';"
+
+---
+name: "Rule114: Speed 1.6, Q 900-1000, TL<=75, 620<deco<=780"
+priority: 114
+condition: "request.speed == 1.6 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule114';"
+
+---
+name: "Rule115: Speed 1.6, Q 900-1000, TL>75, deco<=620"
+priority: 115
+condition: "request.speed == 1.6 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl > 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule115';"
+
+---
+name: "Rule116: Speed 1.6, Q 1000-1025, deco<=350"
+priority: 116
+condition: "request.speed == 1.6 && request.q > 1000 && request.q <= 1025 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 350"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule116';"
+
+---
+name: "Rule117: Speed 1.6, Q 1025-1050, TL<=75, deco<=40%*Q"
+priority: 117
+condition: "request.speed == 1.6 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule117';"
+
+---
+name: "Rule118: Speed 1.6, Q 1025-1050, TL<=75, 40%*Q<deco<=860"
+priority: 118
+condition: "request.speed == 1.6 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule118';"
+
+---
+name: "Rule119: Speed 1.6, Q 1025-1050, TL>75, deco<=40%*Q"
+priority: 119
+condition: "request.speed == 1.6 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl > 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule119';"
+
+---
+name: "Rule120: Speed 1.6, Q 1050-1155, deco<=40%*Q"
+priority: 120
+condition: "request.speed == 1.6 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule120';"
+
+---
+name: "Rule121: Speed 1.6, Q 1050-1155, 40%*Q<deco<=860"
+priority: 121
+condition: "request.speed == 1.6 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule121';"
+
+---
+name: "Rule122: Speed 1.6, Q 1155-1200, deco<=350"
+priority: 122
+condition: "request.speed == 1.6 && request.q > 1155 && request.q <= 1200 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 350"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule122';"
+
+---
+name: "Rule123: Speed 1.6, Q 1200-1275, deco<=40%*Q"
+priority: 123
+condition: "request.speed == 1.6 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule123';"
+
+---
+name: "Rule124: Speed 1.6, Q 1200-1275, 40%*Q<deco<=860"
+priority: 124
+condition: "request.speed == 1.6 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule124';"
+
+---
+name: "Rule125: Speed 1.6, Q 1275-1365, deco<=40%*Q"
+priority: 125
+condition: "request.speed == 1.6 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule125';"
+
+---
+name: "Rule126: Speed 1.6, Q 1275-1365, 40%*Q<deco<1030"
+priority: 126
+condition: "request.speed == 1.6 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal < 1030"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule126';"
+
+---
+name: "Rule126b: Speed 1.6, Q 1300-1365, deco<1030"
+priority: 126
+condition: "request.speed == 1.6 && request.q > 1300 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal < 1030"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule126b';"
+
+---
+name: "Rule127: Speed 1.6, Q 1365-1600"
+priority: 127
+condition: "request.speed == 1.6 && request.q > 1365 && request.q <= 1600"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule127';"
+
+---
+name: "Rule128: Speed 1.6, Q 1600-1800"
+priority: 128
+condition: "request.speed == 1.6 && request.q > 1600 && request.q <= 1800"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule128';"
+
+---
+name: "Rule129: Speed 1.0, Q <= 400"
+priority: 129
+condition: "request.speed == 1.0 && request.q != null && request.q <= 400"
+actions:
+  - "result.result = 'NMX05'; result.matchedRule = 'Rule129';"
+
+---
+name: "Rule130: Speed 1.0, Q 400-450, NMX05 TL<=20 deco<=50 or null"
+priority: 130
+condition: "request.speed == 1.0 && request.q > 400 && request.q <= 450 && request.tl != null && request.tl <= 20 && (request.wgtActualExtraDecoTotal == null || request.wgtActualExtraDecoTotal <= 50)"
+actions:
+  - "result.result = 'NMX05'; result.matchedRule = 'Rule130';"
+
+---
+name: "Rule131: Speed 1.0, Q 400-450, NMX07 TL<=20 deco>50"
+priority: 131
+condition: "request.speed == 1.0 && request.q > 400 && request.q <= 450 && request.tl != null && request.tl <= 20 && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule131';"
+
+---
+name: "Rule132: Speed 1.0, Q 400-450, NMX07 TL>20"
+priority: 132
+condition: "request.speed == 1.0 && request.q > 400 && request.q <= 450 && request.tl != null && request.tl > 20"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule132';"
+
+---
+name: "Rule133: Speed 1.0, Q 450-480, NMX05 TL<=20 deco<=50 or null"
+priority: 133
+condition: "request.speed == 1.0 && request.q > 450 && request.q <= 480 && request.tl != null && request.tl <= 20 && (request.wgtActualExtraDecoTotal == null || request.wgtActualExtraDecoTotal <= 50)"
+actions:
+  - "result.result = 'NMX05'; result.matchedRule = 'Rule133';"
+
+---
+name: "Rule134: Speed 1.0, Q 450-480, NMX07 TL<=20 deco>50"
+priority: 134
+condition: "request.speed == 1.0 && request.q > 450 && request.q <= 480 && request.tl != null && request.tl <= 20 && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule134';"
+
+---
+name: "Rule135: Speed 1.0, Q 450-480, NMX07 TL>20"
+priority: 135
+condition: "request.speed == 1.0 && request.q > 400 && request.q <= 450 && request.tl != null && request.tl > 20"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule132';"
+
+---
+name: "Rule133: Speed 1.0, Q 450-480, NMX05 TL<=20 deco<=50"
+priority: 133
+condition: "request.speed == 1.0 && request.q > 450 && request.q <= 480 && request.tl != null && request.tl <= 20 && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 50"
+actions:
+  - "result.result = 'NMX05'; result.matchedRule = 'Rule133';"
+
+---
+name: "Rule134: Speed 1.0, Q 450-480, NMX07 TL<=20 deco>50"
+priority: 134
+condition: "request.speed == 1.0 && request.q > 450 && request.q <= 480 && request.tl != null && request.tl <= 20 && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule134';"
+
+---
+name: "Rule135: Speed 1.0, Q 450-480, NMX07 TL>20"
+priority: 135
+condition: "request.speed == 1.0 && request.q > 450 && request.q <= 480 && request.tl != null && request.tl > 20"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule135';"
+
+---
+name: "Rule136: Speed 1.0, Q 480-500, NMX07 TL<=25 HMC deco<=150"
+priority: 136
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 150"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule136';"
+
+---
+name: "Rule137: Speed 1.0, Q 480-500, NMX07 TL<=25 non-HMC deco<=100"
+priority: 137
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule137';"
+
+---
+name: "Rule138: Speed 1.0, Q 480-500, NMX07 25<TL<=55 HMC deco<=100"
+priority: 138
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 100"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule138';"
+
+---
+name: "Rule139: Speed 1.0, Q 480-500, NMX07 25<TL<=55 non-HMC deco<=50"
+priority: 139
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal <= 50"
+actions:
+  - "result.result = 'NMX07'; result.matchedRule = 'Rule139';"
+
+---
+name: "Rule140: Speed 1.0, Q 480-500, NMX08 TL<=25 HMC deco>150"
+priority: 140
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl <= 25 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 150"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule140';"
+
+---
+name: "Rule141: Speed 1.0, Q 480-500, NMX08 TL<=25 non-HMC deco>100"
+priority: 141
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl <= 25 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule141';"
+
+---
+name: "Rule142: Speed 1.0, Q 480-500, NMX08 25<TL<=55 HMC 100<deco<=350"
+priority: 142
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl > 25 && request.tl <= 55 && request.carType != null && request.carType == 'HMC car' && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 100 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule142';"
+
+---
+name: "Rule143: Speed 1.0, Q 480-500, NMX08 25<TL<=55 non-HMC 50<deco<=350"
+priority: 143
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl > 25 && request.tl <= 55 && (request.carType == null || request.carType != 'HMC car') && request.wgtActualExtraDecoTotal != null && request.wgtActualExtraDecoTotal > 50 && request.wgtActualExtraDecoTotal <= 350"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule143';"
+
+---
+name: "Rule144: Speed 1.0, Q 480-500, NMX11-1000 TL>55"
+priority: 144
+condition: "request.speed == 1.0 && request.q > 480 && request.q <= 500 && request.tl != null && request.tl > 55"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule144';"
+
+---
+name: "Rule145: Speed 1.0, Q 500-630, NMX08 SEC extra<=300"
+priority: 145
+condition: "request.speed == 1.0 && request.q > 500 && request.q <= 630 && request.openType != null && request.openType == 'SEC' && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra <= 300"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule145';"
+
+---
+name: "Rule146: Speed 1.0, Q 500-630, NMX11 SEC extra>300"
+priority: 146
+condition: "request.speed == 1.0 && request.q > 500 && request.q <= 630 && request.openType != null && request.openType == 'SEC' && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra > 300"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule146';"
+
+---
+name: "Rule147: Speed 1.0, Q 500-630, NMX08 TTC extra<=200"
+priority: 147
+condition: "request.speed == 1.0 && request.q > 500 && request.q <= 630 && request.openType != null && request.openType == 'TTC' && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra <= 200"
+actions:
+  - "result.result = 'NMX08'; result.matchedRule = 'Rule147';"
+
+---
+name: "Rule148: Speed 1.0, Q 500-630, NMX11 TTC extra>200"
+priority: 148
+condition: "request.speed == 1.0 && request.q > 500 && request.q <= 630 && request.openType != null && request.openType == 'TTC' && request.wgtCarEstimatedExtra != null && request.wgtCarEstimatedExtra > 200"
+actions:
+  - "result.result = 'NMX11'; result.matchedRule = 'Rule148';"
+
+---
+name: "Rule149: Speed 1.0, Q 630-800, TL<=75, deco<=45%*Q"
+priority: 149
+condition: "request.speed == 1.0 && request.q > 630 && request.q <= 800 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule149';"
+
+---
+name: "Rule150: Speed 1.0, Q 630-800, TL<=75, 35%*Q<deco<=620"
+priority: 150
+condition: "request.speed == 1.0 && request.q > 630 && request.q <= 800 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.35 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule150';"
+
+---
+name: "Rule151: Speed 1.0, Q 630-800, TL<=75, 620<deco<=740"
+priority: 151
+condition: "request.speed == 1.0 && request.q > 630 && request.q <= 800 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 740"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule151';"
+
+---
+name: "Rule152: Speed 1.0, Q 800-900, TL<=75, deco<=45%*Q"
+priority: 152
+condition: "request.speed == 1.0 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule152';"
+
+---
+name: "Rule153: Speed 1.0, Q 800-900, TL<=75, 45%*Q<deco<=620"
+priority: 153
+condition: "request.speed == 1.0 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.45 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule153';"
+
+---
+name: "Rule154: Speed 1.0, Q 800-900, TL<=75, 620<deco<=780"
+priority: 154
+condition: "request.speed == 1.0 && request.q > 800 && request.q <= 900 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule154';"
+
+---
+name: "Rule155: Speed 1.0, Q 900-1000, TL<=75, deco<=45%*Q"
+priority: 155
+condition: "request.speed == 1.0 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule155';"
+
+---
+name: "Rule156: Speed 1.0, Q 900-1000, TL<=75, 45%*Q<deco<=620"
+priority: 156
+condition: "request.speed == 1.0 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.45 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule156';"
+
+---
+name: "Rule157: Speed 1.0, Q 900-1000, TL<=75, 620<deco<=780"
+priority: 157
+condition: "request.speed == 1.0 && request.q > 900 && request.q <= 1000 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule157';"
+
+---
+name: "Rule158: Speed 1.0, Q 1000-1025, TL<=75, deco<=45%*Q"
+priority: 158
+condition: "request.speed == 1.0 && request.q > 1000 && request.q <= 1025 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.45 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule158';"
+
+---
+name: "Rule159: Speed 1.0, Q 1000-1025, TL<=75, 45%*Q<deco<=620"
+priority: 159
+condition: "request.speed == 1.0 && request.q > 1000 && request.q <= 1025 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.45 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule159';"
+
+---
+name: "Rule160: Speed 1.0, Q 1000-1025, TL<=75, 620<deco<=780"
+priority: 160
+condition: "request.speed == 1.0 && request.q > 1000 && request.q <= 1025 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule160';"
+
+---
+name: "Rule161: Speed 1.0, Q 1025-1050, TL<=75, deco<=40%*Q"
+priority: 161
+condition: "request.speed == 1.0 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1000'; result.matchedRule = 'Rule161';"
+
+---
+name: "Rule162: Speed 1.0, Q 1025-1050, TL<=75, 40%*Q<deco<=620"
+priority: 162
+condition: "request.speed == 1.0 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 620"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule162';"
+
+---
+name: "Rule163: Speed 1.0, Q 1025-1050, TL<=75, 620<deco<=780"
+priority: 163
+condition: "request.speed == 1.0 && request.q > 1025 && request.q <= 1050 && request.tl != null && request.tl <= 75 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 620 && request.wgtCarDecorationTotal <= 780"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule163';"
+
+---
+name: "Rule164: Speed 1.0, Q 1050-1155, deco<=40%*Q"
+priority: 164
+condition: "request.speed == 1.0 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 0.4 * request.q"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule164';"
+
+---
+name: "Rule165: Speed 1.0, Q 1050-1155, 40%*Q<deco<=860"
+priority: 165
+condition: "request.speed == 1.0 && request.q > 1050 && request.q <= 1155 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 0.4 * request.q && request.wgtCarDecorationTotal <= 860"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule165';"
+
+---
+name: "Rule166: Speed 1.0, Q 1155-1200, deco<=350"
+priority: 166
+condition: "request.speed == 1.0 && request.q > 1155 && request.q <= 1200 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 350"
+actions:
+  - "result.result = 'NMX11-1150'; result.matchedRule = 'Rule166';"
+
+---
+name: "Rule167: Speed 1.0, Q 1155-1200, 350<deco<=700"
+priority: 167
+condition: "request.speed == 1.0 && request.q > 1155 && request.q <= 1200 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 350 && request.wgtCarDecorationTotal <= 700"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule167';"
+
+---
+name: "Rule168: Speed 1.0, Q 1200-1275, deco<=793"
+priority: 168
+condition: "request.speed == 1.0 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 793"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule168';"
+
+---
+name: "Rule169: Speed 1.0, Q 1200-1275, 793<deco<=960"
+priority: 169
+condition: "request.speed == 1.0 && request.q > 1200 && request.q <= 1275 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 793 && request.wgtCarDecorationTotal <= 960"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule169';"
+
+---
+name: "Rule170: Speed 1.0, Q 1275-1365, deco<=793"
+priority: 170
+condition: "request.speed == 1.0 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 793"
+actions:
+  - "result.result = 'NMX14S'; result.matchedRule = 'Rule170';"
+
+---
+name: "Rule171: Speed 1.0, Q 1275-1365, 793<deco<1030"
+priority: 171
+condition: "request.speed == 1.0 && request.q > 1275 && request.q <= 1365 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 793 && request.wgtCarDecorationTotal < 1030"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule171';"
+
+---
+name: "Rule172: Speed 1.0, Q 1365-1600, deco<=793"
+priority: 172
+condition: "request.speed == 1.0 && request.q > 1365 && request.q <= 1600 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal <= 793"
+actions:
+  - "result.result = 'NMX14'; result.matchedRule = 'Rule172';"
+
+---
+name: "Rule172b: Speed 1.0, Q 1365-1600, 793<deco<1030"
+priority: 172
+condition: "request.speed == 1.0 && request.q > 1365 && request.q <= 1600 && request.wgtCarDecorationTotal != null && request.wgtCarDecorationTotal > 793 && request.wgtCarDecorationTotal < 1030"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule172b';"
+
+---
+name: "Rule173: Speed 1.0, Q 1600-1800"
+priority: 173
+condition: "request.speed == 1.0 && request.q > 1600 && request.q <= 1800"
+actions:
+  - "result.result = 'NMX14'; result.matchedRule = 'Rule173';"
+
+---
+name: "Rule174: Speed 1.0, Q 1800-2000"
+priority: 174
+condition: "request.speed == 1.0 && request.q > 1800 && request.q <= 2000"
+actions:
+  - "result.result = 'NMX20'; result.matchedRule = 'Rule174';"
+
+---
+name: "Default NA"
+priority: 1000
+condition: "true"
+actions:
+  - "result.result = 'NA'; result.matchedRule = 'No matching rule';"
