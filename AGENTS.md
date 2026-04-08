@@ -192,3 +192,31 @@ When adding a new PRD file (e.g., `prd/rail/new_feature_rules.md`):
 5. **Test**: Create `NewFeatureServiceTest.java` in `test/java/hz/lift/service/rail/`
 
 Follow existing patterns exactly - match field names to PRD columns.
+
+## Multi-Step Task Checklist Rule
+
+When user provides numbered items (e.g., "1. Do X, 2. Do Y, 3. Do Z"), **immediately create a todo list** and verify each item upon completion:
+
+### Protocol
+1. **Immediately**: Create todo items for each numbered item
+2. **Per-item**: Mark `in_progress` before starting, `completed` after finishing
+3. **Final check**: Before reporting completion, verify ALL items are marked done
+
+### Example
+User request: "Process the file: 1. Handle origi: cells, 2. Handle e.g. cells, 3. Keep unmarked cells unchanged"
+
+Correct behavior:
+```
+[todo] 1. Handle origi: cells - in_progress
+[todo] 2. Handle e.g. cells - pending  
+[todo] 3. Keep unmarked cells unchanged - pending
+→ Do item 1, mark completed
+→ Do item 2, mark completed
+→ Do item 3, mark completed
+→ Final verification: all items completed
+```
+
+### Anti-Pattern (NEVER do this)
+- Start working immediately without creating todo
+- Complete only part of the items and report "done"
+- Forget to verify all numbered items were addressed

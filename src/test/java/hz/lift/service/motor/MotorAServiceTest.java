@@ -1,12 +1,13 @@
 package hz.lift.service.motor;
 
-import hz.lift.model.motor.MotorARequest;
-import hz.lift.model.motor.MotorAResponse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import hz.lift.model.motor.MotorARequest;
+import hz.lift.model.motor.MotorAResponse;
 
 @SpringBootTest
 class MotorAServiceTest {
@@ -14,1428 +15,1363 @@ class MotorAServiceTest {
     @Autowired
     private MotorAService service;
 
+    // ========== Col2: 400<Q<=450, Speed=1.0 ==========
+
     @Test
-    void testSpeed3_Q800_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 850.0, null, 700.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol2_Q425_Speed1_TL15_Deco40_NMX05() {
+        MotorARequest request = new MotorARequest(
+            1.0, 425.0, 15.0, null, 40.0, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
+        assertEquals("NMX05", response.getResult());
     }
 
     @Test
-    void testSpeed3_Q900_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 900.0, null, 620.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol2_Q425_Speed1_TL20_Deco40_NMX05() {
+        // tl<=20 AND deco<=50 → NMX05
+        MotorARequest request = new MotorARequest(
+            1.0, 425.0, 20.0, null, 40.0, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
+        assertEquals("NMX05", response.getResult());
     }
 
     @Test
-    void testSpeed2_5_Q500_NMX11() {
-        MotorARequest request = new MotorARequest(2.5, 550.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol2_Q425_Speed1_TL15_Deco60_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 425.0, 15.0, null, 60.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol2_Q425_Speed1_TL21_Deco50_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 425.0, 21.0, null, 50.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    // ========== Col3: 450<Q<=500, Speed=1.0 ==========
+
+    @Test
+    void testCol3_Q470_Speed1_TL15_Deco40_NMX05() {
+        MotorARequest request = new MotorARequest(
+            1.0, 470.0, 15.0, null, 40.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX05", response.getResult());
+    }
+
+    @Test
+    void testCol3_Q470_Speed1_TL25_Deco40_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 470.0, 25.0, null, 40.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol3_Q480_Speed1_TL20_Deco50_NMX05() {
+        MotorARequest request = new MotorARequest(
+            1.0, 480.0, 20.0, null, 50.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX05", response.getResult());
+    }
+
+    @Test
+    void testCol3_Q480_Speed1_TL21_Deco50_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 480.0, 21.0, null, 50.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol3_Q485_Speed1_TL20_Deco50_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 485.0, 20.0, null, 50.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol3_Q490_Speed1_TL15_Deco40_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 490.0, 15.0, null, 40.0, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    // ========== Col4: 500<Q<=630, Speed=1.75 ==========
+
+    @Test
+    void testCol4_Q550_Speed175_TL20_Deco100_CarHMC_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.75, 550.0, 20.0, null, 100.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q550_Speed175_TL20_Deco160_CarHMC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.75, 550.0, 20.0, null, 160.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q550_Speed175_TL30_Deco100_CarHMC_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.75, 550.0, 30.0, null, 100.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q550_Speed175_TL30_Deco150_CarHMC_NMX08() {
+        // tl=30 (>25) AND HMC/deco=150 (>100) → NMX08
+        MotorARequest request = new MotorARequest(
+            1.75, 550.0, 30.0, null, 150.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q550_Speed175_TL30_Deco200_CarHMC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.75, 550.0, 30.0, null, 200.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q550_Speed175_TL56_Deco50_CarHMC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.75, 550.0, 56.0, null, 50.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    // ========== Col4: 500<Q<=630, Speed=1.6 ==========
+
+    @Test
+    void testCol4_Q600_Speed16_TL20_Deco100_CarHMC_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.6, 600.0, 20.0, null, 100.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q600_Speed16_TL20_Deco160_CarHMC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.6, 600.0, 20.0, null, 160.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q600_Speed16_TL30_Deco100_CarHMC_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.6, 600.0, 30.0, null, 100.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q600_Speed16_TL56_Deco50_CarHMC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.6, 600.0, 56.0, null, 50.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    // ========== Col4: 500<Q<=630, Speed=1.0 ==========
+
+    @Test
+    void testCol4_Q600_Speed10_TL20_Deco100_CarHMC_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 600.0, 20.0, null, 100.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q600_Speed10_TL20_Deco160_CarHMC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.0, 600.0, 20.0, null, 160.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q600_Speed10_TL30_Deco100_CarHMC_NMX07() {
+        MotorARequest request = new MotorARequest(
+            1.0, 600.0, 30.0, null, 100.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX07", response.getResult());
+    }
+
+    @Test
+    void testCol4_Q600_Speed10_TL56_Deco50_CarHMC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.0, 600.0, 56.0, null, 50.0, "HMC", null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    // ========== Col5: 630<Q<=800, Speed=1.75 ==========
+
+    @Test
+    void testCol5_Q700_Speed175_TL50_Deco150_OpenSEC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.75, 700.0, 50.0, null, null, null, null, null, null, null, null, null, 150.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q700_Speed175_TL50_Deco200_OpenSEC_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.75, 700.0, 50.0, null, null, null, null, null, null, null, null, null, 200.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q700_Speed175_TL70_Deco100_OpenSEC_NMX08() {
+        // tl=70 (>60,<=75) AND wgtCarEstimatedExtra=100 (<=100) → NMX08
+        MotorARequest request = new MotorARequest(
+            1.75, 700.0, 70.0, null, null, null, null, null, null, null, null, null, 100.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q700_Speed175_TL70_Deco150_OpenSEC_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.75, 700.0, 70.0, null, null, null, null, null, null, null, null, null, 150.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q700_Speed175_TL50_Deco150_OpenTTC_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.75, 700.0, 50.0, null, null, null, null, null, null, null, null, null, 150.0, "TTC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    // ========== Col5: 630<Q<=800, Speed=1.6 ==========
+
+    @Test
+    void testCol5_Q750_Speed16_TL50_Deco150_OpenSEC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.6, 750.0, 50.0, null, null, null, null, null, null, null, null, null, 150.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q750_Speed16_TL50_Deco200_OpenSEC_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.6, 750.0, 50.0, null, null, null, null, null, null, null, null, null, 200.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q750_Speed16_TL70_Deco100_OpenSEC_NMX08() {
+        // tl=70 (>60,<=75) AND wgtCarEstimatedExtra=100 (<=100) → NMX08
+        MotorARequest request = new MotorARequest(
+            1.6, 750.0, 70.0, null, null, null, null, null, null, null, null, null, 100.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q750_Speed16_TL50_Deco150_OpenTTC_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.6, 750.0, 50.0, null, null, null, null, null, null, null, null, null, 150.0, "TTC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    // ========== Col5: 630<Q<=800, Speed=1.0 ==========
+
+    @Test
+    void testCol5_Q700_Speed10_TL50_Deco300_OpenSEC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.0, 700.0, 50.0, null, null, null, null, null, null, null, null, null, 300.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q700_Speed10_TL50_Deco350_OpenSEC_NMX11() {
+        MotorARequest request = new MotorARequest(
+            1.0, 700.0, 50.0, null, null, null, null, null, null, null, null, null, 350.0, "SEC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q700_Speed10_TL50_Deco200_OpenTTC_NMX08() {
+        MotorARequest request = new MotorARequest(
+            1.0, 700.0, 50.0, null, null, null, null, null, null, null, null, null, 200.0, "TTC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX08", response.getResult());
+    }
+
+    @Test
+    void testCol5_Q700_Speed10_TL50_Deco250_OpenTTC_NMX11() {
+        MotorARequest request = new MotorARequest(
+            1.0, 700.0, 50.0, null, null, null, null, null, null, null, null, null, 250.0, "TTC"
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11", response.getResult());
+    }
+
+    // ========== Col7: 800<Q<=900, Speed=2.5 ==========
+
+    @Test
+    void testCol7_Q850_Speed25_TL90_Deco340_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.5, 850.0, 90.0, 340.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q450_NMX11() {
-        MotorARequest request = new MotorARequest(2.0, 460.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed25_TL90_Deco360_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 850.0, 90.0, 360.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
+        assertEquals("NMX20", response.getResult());
     }
 
     @Test
-    void testSpeed1_75_Q400_NMX07() {
-        MotorARequest request = new MotorARequest(1.75, 400.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed25_TL50_Deco500_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 850.0, 50.0, 500.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col7: 800<Q<=900, Speed=2.0 ==========
+
+    @Test
+    void testCol7_Q850_Speed20_TL90_Deco340_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.0, 850.0, 90.0, 340.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed1_75_Q450_NMX07() {
-        MotorARequest request = new MotorARequest(1.75, 450.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed20_TL90_Deco360_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 850.0, 90.0, 360.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
+        assertEquals("NMX20", response.getResult());
     }
 
-    @Test
-    void testSpeed1_75_Q500_NMX07_TL20() {
-        MotorARequest request = new MotorARequest(1.75, 500.0, 20.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
+    // ========== Col7: 800<Q<=900, Speed=1.75 ==========
 
     @Test
-    void testSpeed1_75_Q500_NMX07_TL30() {
-        MotorARequest request = new MotorARequest(1.75, 500.0, 30.0, null, 60.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q500_NMX08() {
-        MotorARequest request = new MotorARequest(1.75, 500.0, 30.0, null, 200.0, "HMC car", null, null, null, null, null, null, 180.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q500_NMX11_1000_TL80() {
-        MotorARequest request = new MotorARequest(1.75, 500.0, 80.0, null, null, null, null, null, null, null, null, null, null, "TTC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q400_NMX07() {
-        MotorARequest request = new MotorARequest(1.6, 400.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q400_NMX05() {
-        MotorARequest request = new MotorARequest(1.0, 400.0, 15.0, 40.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX05", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q400_T7007_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 400.0, 15.0, 40.0, null, null, null, true, "NO", null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q420_NMX05_TL20() {
-        MotorARequest request = new MotorARequest(1.0, 420.0, 20.0, 50.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX05", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q420_NMX07_TL25() {
-        MotorARequest request = new MotorARequest(1.0, 420.0, 25.0, 60.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q500_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 500.0, 30.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q550_NMX08_SEC() {
-        MotorARequest request = new MotorARequest(1.0, 550.0, null, null, null, null, null, null, null, null, null, null, 250.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q550_NMX11_SEC() {
-        MotorARequest request = new MotorARequest(1.0, 550.0, null, null, null, null, null, null, null, null, null, null, 350.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q700_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 700.0, 50.0, 280.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed175_TL75_Deco350_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.75, 850.0, 75.0, 350.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1000", response.getResult());
     }
 
     @Test
-    void testSpeed1_Q850_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 850.0, 60.0, 350.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed175_TL75_Deco380_NMX111000() {
+        // 0.35*850=297.5, deco=380 > 297.5 → NMX11-1000
+        MotorARequest request = new MotorARequest(
+            1.75, 850.0, 75.0, 380.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1000", response.getResult());
     }
 
     @Test
-    void testSpeed1_Q1000_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 1000.0, 70.0, 700.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed175_TL75_Deco590_NMX14S() {
+        // Col7 Speed1.75: NMX14S requires deco>585, 590>585 ✓
+        MotorARequest request = new MotorARequest(
+            1.75, 850.0, 75.0, 590.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX14S", response.getResult());
     }
 
     @Test
-    void testSpeed1_Q1300_NMX20() {
-        MotorARequest request = new MotorARequest(1.0, 1300.0, null, 900.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q600_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 600.0, 50.0, 250.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q850_TL80_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 850.0, 80.0, 300.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q850_TL80_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 850.0, 80.0, 500.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1100_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1100.0, null, 500.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_Q1050_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.0, 1050.0, 80.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q950_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 950.0, 85.0, 280.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q950_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 950.0, 85.0, 650.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testImported_NMX08_to_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, 30.0, null, null, null, null, null, null, null, true, null, 100.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testEN81_77_C1_NMX07_to_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, 30.0, null, 80.0, "HMC car", null, null, null, null, null, true, null, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testKDM40_NMX08_to_NMX11() {
-        MotorARequest request = new MotorARequest(1.0, 420.0, 20.0, 50.0, null, null, null, null, null, "true", null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testNA_NullSpeed() {
-        MotorARequest request = new MotorARequest(null, 500.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed175_TL76_Deco590_NA() {
+        // tl=76 (>75) → no rule matches for NMX
+        MotorARequest request = new MotorARequest(
+            1.75, 850.0, 76.0, 590.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NA", response.getResult());
     }
 
+    // ========== Col7: 800<Q<=900, Speed=1.6 ==========
+
     @Test
-    void testNA_NullQ() {
-        MotorARequest request = new MotorARequest(1.0, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol7_Q850_Speed16_TL75_Deco350_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.6, 850.0, 75.0, 350.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol7_Q850_Speed16_TL75_Deco590_NMX14S() {
+        // Col7 Speed1.6: NMX14S requires deco>585, 590>585 ✓
+        MotorARequest request = new MotorARequest(
+            1.6, 850.0, 75.0, 590.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col7: 800<Q<=900, Speed=1.0 ==========
+
+    @Test
+    void testCol7_Q850_Speed10_Deco350_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.0, 850.0, 50.0, 350.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol7_Q850_Speed10_Deco400_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.0, 850.0, 50.0, 400.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol7_Q850_Speed10_Deco630_NMX14S() {
+        // deco=630 (>620 && <=740) → NMX14S
+        MotorARequest request = new MotorARequest(
+            1.0, 850.0, 50.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col8: 900<Q<=1000, Speed=3.0 ==========
+
+    @Test
+    void testCol8_Q950_Speed30_Deco780_NMX20() {
+        MotorARequest request = new MotorARequest(
+            3.0, 950.0, 50.0, 780.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col8: 900<Q<=1000, Speed=2.5 ==========
+
+    @Test
+    void testCol8_Q950_Speed25_TL90_Deco600_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.5, 950.0, 90.0, 600.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol8_Q950_Speed25_TL90_Deco650_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 950.0, 90.0, 650.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col8: 900<Q<=1000, Speed=2.0 ==========
+
+    @Test
+    void testCol8_Q950_Speed20_TL90_Deco600_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.0, 950.0, 90.0, 600.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol8_Q950_Speed20_TL90_Deco650_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 950.0, 90.0, 650.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col8: 900<Q<=1000, Speed=1.75 ==========
+
+    @Test
+    void testCol8_Q950_Speed175_TL75_Deco420_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.75, 950.0, 75.0, 420.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol8_Q950_Speed175_TL75_Deco450_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.75, 950.0, 75.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol8_Q950_Speed175_TL75_Deco630_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.75, 950.0, 75.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    @Test
+    void testCol8_Q950_Speed175_TL76_Deco630_NA() {
+        // tl=76 (>75) → no rule matches
+        MotorARequest request = new MotorARequest(
+            1.75, 950.0, 76.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NA", response.getResult());
     }
 
-    @Test
-    void testNA_NullRequest() {
-        MotorAResponse response = service.getMotor(null);
-        assertEquals("NA", response.getResult());
-    }
+    // ========== Col8: 900<Q<=1000, Speed=1.6 ==========
 
     @Test
-    void testSpeed1_75_Q460_NMX07() {
-        MotorARequest request = new MotorARequest(1.75, 460.0, 20.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
+    void testCol8_Q950_Speed16_TL75_Deco420_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.6, 950.0, 75.0, 420.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
+        assertEquals("NMX11-1000", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q800_SS550_Q885() {
-        MotorARequest request = new MotorARequest(2.0, 885.0, 80.0, 500.0, null, null, "SS550*", null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_Q800_NotSS550() {
-        MotorARequest request = new MotorARequest(2.0, 850.0, 80.0, 500.0, null, null, "OTHER", null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q500_NMX07_TL40() {
-        MotorARequest request = new MotorARequest(1.6, 500.0, 40.0, null, 120.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q500_NMX07() {
-        MotorARequest request = new MotorARequest(1.6, 500.0, 40.0, null, 200.0, "HMC car", null, null, null, null, null, null, 180.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1150_NMX14S() {
-        MotorARequest request = new MotorARequest(1.6, 1150.0, null, 500.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol8_Q950_Speed16_TL75_Deco630_NMX14S() {
+        // Col8 Speed1.6/1.75 NMX14S: deco>620 && <=780, 630>620 ✓
+        MotorARequest request = new MotorARequest(
+            1.6, 950.0, 75.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX14S", response.getResult());
     }
 
-    @Test
-    void testSpeed1_6_Q1300_NMX20() {
-        MotorARequest request = new MotorARequest(1.6, 1300.0, null, 900.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
+    // ========== Col8: 900<Q<=1000, Speed=1.0 ==========
 
     @Test
-    void testSpeed1_Q1100_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.0, 1100.0, null, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1500_NMX20() {
-        MotorARequest request = new MotorARequest(1.0, 1500.0, null, 800.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q900_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 900.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol8_Q950_Speed10_Deco420_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.0, 950.0, 50.0, 420.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1000", response.getResult());
     }
 
     @Test
-    void testSpeed1_75_Q1000_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 1000.0, 70.0, 380.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol8_Q950_Speed10_Deco450_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.0, 950.0, 50.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol8_Q950_Speed10_Deco630_NMX14S() {
+        // Col8 Speed1.0 NMX14S: deco>620 && <=780, 630>620 ✓
+        MotorARequest request = new MotorARequest(
+            1.0, 950.0, 50.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col9: 1000<Q<=1025, Speed=3.0 ==========
+
+    @Test
+    void testCol9_Q1010_Speed30_Deco780_NMX20() {
+        MotorARequest request = new MotorARequest(
+            3.0, 1010.0, 50.0, 780.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col9: 1000<Q<=1025, Speed=2.5 ==========
+
+    @Test
+    void testCol9_Q1010_Speed25_TL90_Deco620_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1010.0, 90.0, 620.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol9_Q1010_Speed25_TL90_Deco700_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1010.0, 90.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col9: 1000<Q<=1025, Speed=2.0 ==========
+
+    @Test
+    void testCol9_Q1010_Speed20_TL90_Deco620_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1010.0, 90.0, 620.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol9_Q1010_Speed20_TL90_Deco700_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1010.0, 90.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col9: 1000<Q<=1025, Speed=1.75 ==========
+
+    @Test
+    void testCol9_Q1010_Speed175_TL75_Deco450_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1010.0, 75.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1000", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q1275_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 1275.0, null, 800.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1050_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1050.0, null, 800.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q1100_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 1100.0, null, 850.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    // ========== New tests for speed=null with special conditions ==========
-
-    // T7007_2022 + speed=null -> NMX07
-    @Test
-    void testT7007_NullSpeed_Q400_NMX07() {
-        MotorARequest request = new MotorARequest(null, 400.0, 15.0, 40.0, null, null, null, true, "NO", null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testT7007_NullSpeed_Q420_NMX07() {
-        MotorARequest request = new MotorARequest(null, 420.0, 25.0, 60.0, null, null, null, true, "NO", null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    // Imported + speed=null -> NMX11
-    @Test
-    void testImported_NullSpeed_Q450_NMX11() {
-        MotorARequest request = new MotorARequest(null, 450.0, null, null, null, null, null, null, null, null, true, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testImported_NullSpeed_Q550_NMX11() {
-        MotorARequest request = new MotorARequest(null, 550.0, null, null, null, null, null, null, null, null, true, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    // EN81-77_C1 + speed=null -> NMX11
-    @Test
-    void testEN81_NullSpeed_Q400_NMX11() {
-        MotorARequest request = new MotorARequest(null, 400.0, null, null, null, null, null, null, null, null, null, true, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testEN81_NullSpeed_Q450_NMX11() {
-        MotorARequest request = new MotorARequest(null, 450.0, null, null, null, null, null, null, null, null, null, true, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testEN81_NullSpeed_Q550_NMX11() {
-        MotorARequest request = new MotorARequest(null, 550.0, null, null, null, null, null, null, null, null, null, true, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    // KDM40 + speed=null -> NMX11
-    @Test
-    void testKDM40_NullSpeed_Q450_NMX11() {
-        MotorARequest request = new MotorARequest(null, 450.0, null, null, null, null, null, null, null, "true", null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testKDM40_NullSpeed_Q550_NMX11() {
-        MotorARequest request = new MotorARequest(null, 550.0, null, null, null, null, null, null, null, "true", null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    // SS550* Q=885 with different speeds
-    @Test
-    void testSpeed3_Q885_SS550_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 885.0, null, 700.0, null, null, "SS550*", null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q885_SS550_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 885.0, null, 500.0, null, null, "SS550*", null, null, null, null, null, null, null);
+    void testCol9_Q1010_Speed175_TL75_Deco500_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1010.0, 75.0, 500.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed1_75_Q885_SS550_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 885.0, 60.0, 400.0, null, null, "SS550*", null, null, null, null, null, null, null);
+    void testCol9_Q1010_Speed175_TL75_Deco630_NMX14S() {
+        // deco=630 (>620 && <=780) → NMX14S
+        MotorARequest request = new MotorARequest(
+            1.75, 1010.0, 75.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col9: 1000<Q<=1025, Speed=1.6 ==========
+
+    @Test
+    void testCol9_Q1010_Speed16_TL75_Deco450_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1010.0, 75.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol9_Q1010_Speed16_TL75_Deco630_NMX14S() {
+        // deco=630 (>620 && <=780) → NMX14S
+        MotorARequest request = new MotorARequest(
+            1.6, 1010.0, 75.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col9: 1000<Q<=1025, Speed=1.0 ==========
+
+    @Test
+    void testCol9_Q1010_Speed10_Deco450_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1010.0, 50.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol9_Q1010_Speed10_Deco630_NMX14S() {
+        // NMX14S: deco>620 && <=780, 630>620 ✓
+        MotorARequest request = new MotorARequest(
+            1.0, 1010.0, 50.0, 630.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col10: 1025<Q<=1050, Speed=3.0 ==========
+
+    @Test
+    void testCol10_Q1035_Speed30_Deco780_NMX20() {
+        MotorARequest request = new MotorARequest(
+            3.0, 1035.0, 50.0, 780.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col10: 1025<Q<=1050, Speed=2.5 ==========
+
+    @Test
+    void testCol10_Q1035_Speed25_TL90_Deco620_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1035.0, 90.0, 620.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed1_6_Q885_SS550_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 885.0, 60.0, 400.0, null, null, "SS550*", null, null, null, null, null, null, null);
+    void testCol10_Q1035_Speed25_TL90_Deco700_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1035.0, 90.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col10: 1025<Q<=1050, Speed=2.0 ==========
+
+    @Test
+    void testCol10_Q1035_Speed20_TL90_Deco620_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1035.0, 90.0, 620.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed1_Q885_SS550_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 885.0, 60.0, 400.0, null, null, "SS550*", null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    // ========== Additional coverage tests ==========
-
-    // T7007_2022 rules coverage
-    @Test
-    void testT7007_Q450_TL15_Deco60_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 450.0, 15.0, null, 60.0, null, null, true, "NO", null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testT7007_Q480_TL15_Deco60_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 480.0, 15.0, null, 60.0, null, null, true, "NO", null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testT7007_Q480_TL30_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 480.0, 30.0, null, null, null, null, true, "NO", null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    // Speed 3.0 coverage
-    @Test
-    void testSpeed3_Q800_Deco780_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 850.0, null, 700.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol10_Q1035_Speed20_TL90_Deco700_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1035.0, 90.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
-    @Test
-    void testSpeed3_Q1000_Deco780_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 900.0, null, 620.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
+    // ========== Col10: 1025<Q<=1050, Speed=1.75 ==========
 
     @Test
-    void testSpeed3_Q900_Deco620_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 900.0, null, 620.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1025_Deco780_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1025.0, null, 780.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1155_Deco860_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1155.0, null, 860.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1275_Deco960_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1275.0, null, 960.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1365_Deco1030_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1365.0, null, 1030.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1500_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1500.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed3_Q1700_NMX20() {
-        MotorARequest request = new MotorARequest(3.0, 1700.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    // Speed 2.5 coverage
-    @Test
-    void testSpeed2_5_Q630_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 630.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol10_Q1035_Speed175_TL75_Deco620_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1035.0, 75.0, 620.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_5_Q800_TL85_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 800.0, 85.0, 350.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol10_Q1035_Speed175_TL75_Deco650_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1035.0, 75.0, 650.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col10: 1025<Q<=1050, Speed=1.6 ==========
+
+    @Test
+    void testCol10_Q1035_Speed16_TL75_Deco620_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1035.0, 75.0, 620.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_5_Q800_TL85_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 800.0, 85.0, 400.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol10_Q1035_Speed16_TL75_Deco650_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1035.0, 75.0, 650.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col10: 1025<Q<=1050, Speed=1.0 ==========
+
+    @Test
+    void testCol10_Q1035_Speed10_Deco410_NMX111000() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1035.0, 50.0, 410.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1000", response.getResult());
+    }
+
+    @Test
+    void testCol10_Q1035_Speed10_Deco450_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1035.0, 50.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_5_Q800_TL100_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 800.0, 100.0, 400.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol10_Q1035_Speed10_Deco650_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1035.0, 50.0, 650.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
+        assertEquals("NMX14S", response.getResult());
     }
 
-    @Test
-    void testSpeed2_5_Q800_TL100_Deco250_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 800.0, 100.0, 250.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
+    // ========== Col11: 1050<Q<=1155, Speed=3.0 ==========
 
     @Test
-    void testSpeed2_5_Q800_TL100_Deco420_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 800.0, 100.0, 420.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q1000_TL85_Deco300_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.5, 1000.0, 85.0, 300.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q1000_TL85_Deco700_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 1000.0, 85.0, 700.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed30_Deco860_NMX20() {
+        MotorARequest request = new MotorARequest(
+            3.0, 1080.0, 50.0, 860.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
+    // ========== Col11: 1050<Q<=1155, Speed=2.5 ==========
+
     @Test
-    void testSpeed2_5_Q1155_Deco860_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 1155.0, null, 860.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed25_Deco860_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1080.0, 50.0, 860.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
-    @Test
-    void testSpeed2_5_Q1400_Deco1190_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 1400.0, null, 1190.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
+    // ========== Col11: 1050<Q<=1155, Speed=2.0 ==========
 
     @Test
-    void testSpeed2_5_Q1700_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 1700.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_5_Q1900_NMX20() {
-        MotorARequest request = new MotorARequest(2.5, 1900.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    // Speed 2.0 coverage
-    @Test
-    void testSpeed2_Q500_NMX11() {
-        MotorARequest request = new MotorARequest(2.0, 500.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testSpeed2_Q630_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.0, 630.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed20_TL90_Deco430_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1080.0, 90.0, 430.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q800_TL85_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.0, 800.0, 85.0, 350.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed20_TL90_Deco500_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1080.0, 90.0, 500.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col11: 1050<Q<=1155, Speed=1.75 ==========
+
+    @Test
+    void testCol11_Q1080_Speed175_TL75_Deco430_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1080.0, 75.0, 430.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q800_TL85_Deco500_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.0, 800.0, 85.0, 500.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed175_TL75_Deco450_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1080.0, 75.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col11: 1050<Q<=1155, Speed=1.6 ==========
+
+    @Test
+    void testCol11_Q1080_Speed16_TL75_Deco430_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1080.0, 75.0, 430.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q900_TL85_Deco600_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 900.0, 85.0, 600.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed16_TL75_Deco450_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1080.0, 75.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
+        assertEquals("NMX14S", response.getResult());
     }
 
-    @Test
-    void testSpeed2_Q900_TL85_Deco700_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 900.0, 85.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
+    // ========== Col11: 1050<Q<=1155, Speed=1.0 ==========
 
     @Test
-    void testSpeed2_Q1050_TL85_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(2.0, 1050.0, 85.0, 400.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed10_Deco430_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1080.0, 50.0, 430.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX11-1150", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q1050_TL85_Deco700_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 1050.0, 85.0, 700.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol11_Q1080_Speed10_Deco450_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1080.0, 50.0, 450.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col12: 1155<Q<=1200, Speed=1.75 ==========
+
+    @Test
+    void testCol12_Q1175_Speed175_Deco350_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1175.0, 50.0, 350.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol12_Q1175_Speed175_Deco400_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1175.0, 50.0, 400.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col12: 1155<Q<=1200, Speed=1.6 ==========
+
+    @Test
+    void testCol12_Q1175_Speed16_Deco350_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1175.0, 50.0, 350.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol12_Q1175_Speed16_Deco400_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1175.0, 50.0, 400.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col12: 1155<Q<=1200, Speed=1.0 ==========
+
+    @Test
+    void testCol12_Q1175_Speed10_Deco350_NMX111150() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1175.0, 50.0, 350.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX11-1150", response.getResult());
+    }
+
+    @Test
+    void testCol12_Q1175_Speed10_Deco400_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1175.0, 50.0, 400.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    // ========== Col13: 1200<Q<=1275, Speed=3.0 ==========
+
+    @Test
+    void testCol13_Q1225_Speed30_Deco960_NMX20() {
+        MotorARequest request = new MotorARequest(
+            3.0, 1225.0, 50.0, 960.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
+    // ========== Col13: 1200<Q<=1275, Speed=2.5 ==========
+
     @Test
-    void testSpeed2_Q1250_TL80_Deco500_NMX14() {
-        MotorARequest request = new MotorARequest(2.0, 1250.0, 80.0, 500.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol13_Q1225_Speed25_Deco960_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1225.0, 50.0, 960.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col13: 1200<Q<=1275, Speed=2.0 ==========
+
+    @Test
+    void testCol13_Q1225_Speed20_Deco490_NMX14() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1225.0, 50.0, 490.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX14", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q1250_TL80_Deco800_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 1250.0, 80.0, 800.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol13_Q1225_Speed20_Deco600_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1225.0, 50.0, 600.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
+    // ========== Col13: 1200<Q<=1275, Speed=1.75 ==========
+
     @Test
-    void testSpeed2_Q1350_TL80_Deco500_NMX14() {
-        MotorARequest request = new MotorARequest(2.0, 1350.0, 80.0, 500.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol13_Q1225_Speed175_Deco700_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1225.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    @Test
+    void testCol13_Q1225_Speed175_Deco850_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1225.0, 50.0, 850.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col13: 1200<Q<=1275, Speed=1.6 ==========
+
+    @Test
+    void testCol13_Q1225_Speed16_Deco700_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1225.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    @Test
+    void testCol13_Q1225_Speed16_Deco850_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1225.0, 50.0, 850.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col13: 1200<Q<=1275, Speed=1.0 ==========
+
+    @Test
+    void testCol13_Q1225_Speed10_Deco700_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1225.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    @Test
+    void testCol13_Q1225_Speed10_Deco850_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1225.0, 50.0, 850.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col14: 1275<Q<=1365, Speed=3.0 ==========
+
+    @Test
+    void testCol14_Q1325_Speed30_Deco1000_NMX20() {
+        MotorARequest request = new MotorARequest(
+            3.0, 1325.0, 50.0, 1000.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col14: 1275<Q<=1365, Speed=2.5 ==========
+
+    @Test
+    void testCol14_Q1325_Speed25_Deco1000_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1325.0, 50.0, 1000.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX20", response.getResult());
+    }
+
+    // ========== Col14: 1275<Q<=1365, Speed=2.0 ==========
+
+    @Test
+    void testCol14_Q1325_Speed20_Deco530_NMX14() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1325.0, 50.0, 530.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX14", response.getResult());
     }
 
     @Test
-    void testSpeed2_Q1350_TL80_Deco900_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 1350.0, 80.0, 900.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol14_Q1325_Speed20_Deco600_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1325.0, 50.0, 600.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
+    // ========== Col14: 1275<Q<=1365, Speed=1.75 ==========
+
     @Test
-    void testSpeed2_Q1500_Deco1190_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 1500.0, null, 1190.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol14_Q1325_Speed175_Deco700_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1325.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    @Test
+    void testCol14_Q1325_Speed175_Deco850_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1325.0, 50.0, 850.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
+    // ========== Col14: 1275<Q<=1365, Speed=1.6 ==========
+
     @Test
-    void testSpeed2_Q1700_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 1700.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol14_Q1325_Speed16_Deco700_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1325.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    @Test
+    void testCol14_Q1325_Speed16_Deco850_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1325.0, 50.0, 850.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
+    // ========== Col14: 1275<Q<=1365, Speed=1.0 ==========
+
     @Test
-    void testSpeed2_Q1900_NMX20() {
-        MotorARequest request = new MotorARequest(2.0, 1900.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol14_Q1325_Speed10_Deco700_NMX14S() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1325.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
+        MotorAResponse response = service.getMotor(request);
+        assertEquals("NMX14S", response.getResult());
+    }
+
+    @Test
+    void testCol14_Q1325_Speed10_Deco850_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1325.0, 50.0, 850.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
-    // Speed 1.75 coverage
-    @Test
-    void testSpeed1_75_Q550_TL20_Deco80_HMC_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, 20.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
+    // ========== Col15: 1365<Q<=1600, Speed=2.5 ==========
 
     @Test
-    void testSpeed1_75_Q550_TL20_Deco180_HMC_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, 20.0, null, 180.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q550_TL40_Deco80_HMC_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, 40.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q550_TL40_Deco200_HMC_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, 40.0, null, 200.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q550_TL60_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, 60.0, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q700_SEC_TL50_Deco100_NMX08() {
-        MotorARequest request = new MotorARequest(1.75, 700.0, 50.0, null, 100.0, null, null, null, null, null, null, null, 100.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q700_SEC_TL50_Deco200_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 700.0, 50.0, null, 200.0, null, null, null, null, null, null, null, 200.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q700_SEC_TL70_Deco80_NMX08() {
-        MotorARequest request = new MotorARequest(1.75, 700.0, 70.0, null, 80.0, null, null, null, null, null, null, null, 80.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q700_SEC_TL70_Deco150_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 700.0, 70.0, null, 150.0, null, null, null, null, null, null, null, 150.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q700_TL80_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 700.0, 80.0, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q700_TTC_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 700.0, null, null, null, null, null, null, null, null, null, null, null, "TTC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q850_TL60_Deco350_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 850.0, 60.0, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q850_TL60_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.75, 850.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q850_TL60_Deco600_NMX14S() {
-        MotorARequest request = new MotorARequest(1.75, 850.0, 60.0, 600.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q850_TL80_Deco500_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.75, 850.0, 80.0, 500.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q950_TL60_Deco400_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.75, 950.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q950_TL60_Deco500_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.75, 950.0, 60.0, 500.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q950_TL60_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.75, 950.0, 60.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q1015_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.75, 1015.0, null, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q1100_TL60_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.75, 1100.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q1100_TL60_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.75, 1100.0, 60.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q1180_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.75, 1180.0, null, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q1250_TL60_Deco400_NMX14S() {
-        MotorARequest request = new MotorARequest(1.75, 1250.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_75_Q1250_TL60_Deco700_NMX20() {
-        MotorARequest request = new MotorARequest(1.75, 1250.0, 60.0, 700.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol15_Q1450_Speed25_Deco1000_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.5, 1450.0, 50.0, 1000.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
-    @Test
-    void testSpeed1_75_Q1350_TL60_Deco400_NMX14S() {
-        MotorARequest request = new MotorARequest(1.75, 1350.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
+    // ========== Col15: 1365<Q<=1600, Speed=2.0 ==========
 
     @Test
-    void testSpeed1_75_Q1350_TL60_Deco800_NMX20() {
-        MotorARequest request = new MotorARequest(1.75, 1350.0, 60.0, 800.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol15_Q1450_Speed20_Deco1000_NMX20() {
+        MotorARequest request = new MotorARequest(
+            2.0, 1450.0, 50.0, 1000.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
-    @Test
-    void testSpeed1_75_Q1500_NMX20() {
-        MotorARequest request = new MotorARequest(1.75, 1500.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
+    // ========== Col15: 1365<Q<=1600, Speed=1.75 ==========
 
     @Test
-    void testSpeed1_75_Q1700_NMX20() {
-        MotorARequest request = new MotorARequest(1.75, 1700.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    // Speed 1.6 coverage
-    @Test
-    void testSpeed1_6_Q550_TL20_Deco80_HMC_NMX07() {
-        MotorARequest request = new MotorARequest(1.6, 550.0, 20.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q550_TL20_Deco180_HMC_NMX08() {
-        MotorARequest request = new MotorARequest(1.6, 550.0, 20.0, null, 180.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q550_TL40_Deco80_HMC_NMX07() {
-        MotorARequest request = new MotorARequest(1.6, 550.0, 40.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q550_TL40_Deco200_HMC_NMX08() {
-        MotorARequest request = new MotorARequest(1.6, 550.0, 40.0, null, 200.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q550_TL60_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 550.0, 60.0, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q700_SEC_TL50_Deco100_NMX08() {
-        MotorARequest request = new MotorARequest(1.6, 700.0, 50.0, null, 100.0, null, null, null, null, null, null, null, 100.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q700_SEC_TL50_Deco200_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 700.0, 50.0, null, 200.0, null, null, null, null, null, null, null, 200.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q700_SEC_TL70_Deco80_NMX08() {
-        MotorARequest request = new MotorARequest(1.6, 700.0, 70.0, null, 80.0, null, null, null, null, null, null, null, 80.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q700_SEC_TL70_Deco150_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 700.0, 70.0, null, 150.0, null, null, null, null, null, null, null, 150.0, "SEC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q700_TL80_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 700.0, 80.0, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q700_TTC_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 700.0, null, null, null, null, null, null, null, null, null, null, null, "TTC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q850_TL60_Deco350_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 850.0, 60.0, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q850_TL60_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.6, 850.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q850_TL60_Deco600_NMX14S() {
-        MotorARequest request = new MotorARequest(1.6, 850.0, 60.0, 600.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q950_TL60_Deco400_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.6, 950.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q950_TL60_Deco500_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.6, 950.0, 60.0, 500.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q950_TL60_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.6, 950.0, 60.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1015_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.6, 1015.0, null, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1100_TL60_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.6, 1100.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1100_TL60_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.6, 1100.0, 60.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1180_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.6, 1180.0, null, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1250_TL60_Deco400_NMX14S() {
-        MotorARequest request = new MotorARequest(1.6, 1250.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1250_TL60_Deco700_NMX20() {
-        MotorARequest request = new MotorARequest(1.6, 1250.0, 60.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1350_TL60_Deco400_NMX14S() {
-        MotorARequest request = new MotorARequest(1.6, 1350.0, 60.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1350_TL60_Deco900_NMX20() {
-        MotorARequest request = new MotorARequest(1.6, 1350.0, 60.0, 900.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1500_NMX20() {
-        MotorARequest request = new MotorARequest(1.6, 1500.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_6_Q1700_NMX20() {
-        MotorARequest request = new MotorARequest(1.6, 1700.0, null, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    // Speed 1.0 coverage
-    @Test
-    void testSpeed1_Q460_TL15_Deco40_NMX05() {
-        MotorARequest request = new MotorARequest(1.0, 460.0, 15.0, 40.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX05", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q460_TL15_Deco60_NMX05() {
-        MotorARequest request = new MotorARequest(1.0, 460.0, 15.0, 60.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX05", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q420_TL25_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 420.0, 25.0, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q490_TL20_Deco40_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 490.0, 20.0, null, 40.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q490_TL20_Deco120_HMC_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 490.0, 20.0, null, 120.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q490_TL40_Deco80_HMC_NMX07() {
-        MotorARequest request = new MotorARequest(1.0, 490.0, 40.0, null, 80.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX07", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q490_TL40_Deco200_HMC_NMX08() {
-        MotorARequest request = new MotorARequest(1.0, 490.0, 40.0, null, 200.0, "HMC car", null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q490_TL60_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 490.0, 60.0, null, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q600_TTC_Deco150_NMX08() {
-        MotorARequest request = new MotorARequest(1.0, 600.0, null, null, null, null, null, null, null, null, null, null, 150.0, "TTC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX08", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q600_TTC_Deco250_NMX11() {
-        MotorARequest request = new MotorARequest(1.0, 600.0, null, null, null, null, null, null, null, null, null, null, 250.0, "TTC");
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q750_TL60_Deco300_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 750.0, 60.0, 300.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q750_TL60_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.0, 750.0, 60.0, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q750_TL60_Deco650_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 750.0, 60.0, 650.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q850_TL70_Deco380_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 850.0, 70.0, 380.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q850_TL70_Deco450_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.0, 850.0, 70.0, 450.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q850_TL70_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 850.0, 70.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q950_TL70_Deco400_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 950.0, 70.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q950_TL70_Deco500_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.0, 950.0, 70.0, 500.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q950_TL70_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 950.0, 70.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1015_TL70_Deco450_NMX11_1000() {
-        MotorARequest request = new MotorARequest(1.0, 1015.0, 70.0, 450.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1000", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1015_TL70_Deco550_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.0, 1015.0, 70.0, 550.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1015_TL70_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 1015.0, 70.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1100_TL70_Deco400_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.0, 1100.0, 70.0, 400.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1100_TL70_Deco700_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 1100.0, 70.0, 700.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1180_Deco350_NMX11_1150() {
-        MotorARequest request = new MotorARequest(1.0, 1180.0, null, 350.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11-1150", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1180_Deco500_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 1180.0, null, 500.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1250_TL70_Deco600_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 1250.0, 70.0, 600.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1250_TL70_Deco900_NMX20() {
-        MotorARequest request = new MotorARequest(1.0, 1250.0, 70.0, 900.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1350_TL70_Deco600_NMX14S() {
-        MotorARequest request = new MotorARequest(1.0, 1350.0, 70.0, 600.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX14S", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1350_TL70_Deco900_NMX20() {
-        MotorARequest request = new MotorARequest(1.0, 1350.0, 70.0, 900.0, null, null, null, null, null, null, null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX20", response.getResult());
-    }
-
-    @Test
-    void testSpeed1_Q1500_Deco700_NMX14() {
-        MotorARequest request = new MotorARequest(1.0, 1500.0, null, 700.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol15_Q1450_Speed175_Deco580_NMX14() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1450.0, 50.0, 580.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX14", response.getResult());
     }
 
     @Test
-    void testSpeed1_Q1500_Deco900_NMX20() {
-        MotorARequest request = new MotorARequest(1.0, 1500.0, null, 900.0, null, null, null, null, null, null, null, null, null, null);
+    void testCol15_Q1450_Speed175_Deco700_NMX20() {
+        // 0.4*1450=580, 580<700<1190 → NMX20
+        MotorARequest request = new MotorARequest(
+            1.75, 1450.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
+    // ========== Col15: 1365<Q<=1600, Speed=1.6 ==========
+
     @Test
-    void testSpeed1_Q1700_NMX14() {
-        MotorARequest request = new MotorARequest(1.0, 1700.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol15_Q1450_Speed16_Deco580_NMX14() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1450.0, 50.0, 580.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX14", response.getResult());
     }
 
     @Test
-    void testSpeed1_Q1900_NMX20() {
-        MotorARequest request = new MotorARequest(1.0, 1900.0, null, null, null, null, null, null, null, null, null, null, null, null);
+    void testCol15_Q1450_Speed16_Deco700_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1450.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
         assertEquals("NMX20", response.getResult());
     }
 
-    // Additional EN81-77_C1 coverage (speed not null)
+    // ========== Col15: 1365<Q<=1600, Speed=1.0 ==========
+
     @Test
-    void testEN81_77_C1_Speed1_75_Q480_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 480.0, null, null, null, null, null, null, null, null, null, true, null, null);
+    void testCol15_Q1450_Speed10_Deco580_NMX14() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1450.0, 50.0, 580.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
+        assertEquals("NMX14", response.getResult());
     }
 
     @Test
-    void testEN81_77_C1_Speed1_75_Q490_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 490.0, null, null, null, null, null, null, null, null, null, true, null, null);
+    void testCol15_Q1450_Speed10_Deco700_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1450.0, 50.0, 700.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
+        assertEquals("NMX20", response.getResult());
     }
 
-    @Test
-    void testEN81_77_C1_Speed1_75_Q580_TL60_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 580.0, 60.0, null, null, null, null, null, null, null, null, true, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
+    // ========== Col16: 1600<Q<=1800, Speed=1.75 ==========
 
     @Test
-    void testEN81_77_C1_Speed1_75_Q580_TL70_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 580.0, 70.0, null, null, null, null, null, null, null, null, true, null, null);
+    void testCol16_Q1700_Speed175_Deco1200_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.75, 1700.0, 50.0, 1200.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
+        assertEquals("NMX20", response.getResult());
     }
 
-    @Test
-    void testEN81_77_C1_Speed1_6_Q580_TL60_NMX11() {
-        MotorARequest request = new MotorARequest(1.6, 580.0, 60.0, null, null, null, null, null, null, null, null, true, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    // KDM40 with speed coverage
-    @Test
-    void testKDM40_Speed1_75_Q550_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, null, null, null, null, null, null, null, "true", null, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
+    // ========== Col16: 1600<Q<=1800, Speed=1.6 ==========
 
     @Test
-    void testKDM40_Speed1_6_Q550_NMX11() {
-        MotorARequest request = new MotorARequest(1.6, 550.0, null, null, null, null, null, null, null, "true", null, null, null, null);
+    void testCol16_Q1700_Speed16_Deco1200_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.6, 1700.0, 50.0, 1200.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
+        assertEquals("NMX20", response.getResult());
     }
 
-    // Imported with speed coverage
-    @Test
-    void testImported_Speed1_75_Q550_NMX11() {
-        MotorARequest request = new MotorARequest(1.75, 550.0, null, null, null, null, null, null, null, null, true, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
+    // ========== Col16: 1600<Q<=1800, Speed=1.0 ==========
 
     @Test
-    void testImported_Speed1_6_Q550_NMX11() {
-        MotorARequest request = new MotorARequest(1.6, 550.0, null, null, null, null, null, null, null, null, true, null, null, null);
+    void testCol16_Q1700_Speed10_Deco1200_NMX20() {
+        MotorARequest request = new MotorARequest(
+            1.0, 1700.0, 50.0, 1200.0, null, null, null, null, null, null, null, null, null, null
+        );
         MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
-    }
-
-    @Test
-    void testImported_Speed1_Q420_NMX11() {
-        MotorARequest request = new MotorARequest(1.0, 420.0, null, null, null, null, null, null, null, null, true, null, null, null);
-        MotorAResponse response = service.getMotor(request);
-        assertEquals("NMX11", response.getResult());
+        assertEquals("NMX20", response.getResult());
     }
 }

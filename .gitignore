@@ -12,12 +12,15 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.sisyphus
+.ruff_cache
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+*.py
 
 
 ### VS Code ###
